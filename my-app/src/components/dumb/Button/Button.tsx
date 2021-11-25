@@ -1,13 +1,12 @@
 import './Button.css'
 
 type ButtonProp = {
-  classname: string,
   text: string
 }
 
-function Button({classname, text}: ButtonProp) {
+function Button({ text }: ButtonProp) {
   return (
-    <button type="button" className={`button button-${classname}`}>{text}</button>
+    <button type="button" className={`button`}>{text}</button>
   )
 }
 
