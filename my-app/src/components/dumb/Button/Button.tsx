@@ -6,7 +6,7 @@ type ButtonProp = {
 
 function Button({ text }: ButtonProp) {
   return (
-    <button type="button" className={`button`}>{text}</button>
+    <button type='button' className='button'>{text}</button>
   )
 }
 
