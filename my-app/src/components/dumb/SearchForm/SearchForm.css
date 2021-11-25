@@ -1,6 +1,5 @@
 .search-form {
-  position: relative
-  ;
+  position: relative;
   display: flex;
   max-width: 600px;
   margin: 0 auto;

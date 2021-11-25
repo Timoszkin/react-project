@@ -1,7 +1,7 @@
+import { ChangeEvent, FormEvent } from 'react';
 import { debounce } from '../../../app/utils';
 import SearchForm from "../../dumb/SearchForm/SearchForm";
 import SearchSuggestionsList from "../../dumb/SearchSuggestionsList/SearchSuggestionsList";
-import { ChangeEvent, FormEvent } from 'react';
 
 function SearchContainer() {
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {

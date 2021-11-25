@@ -1,6 +1,6 @@
-import './SearchForm.css';
-import { ReactComponent as Icon } from './icon.svg';
 import { ChangeEventHandler, FormEventHandler } from 'react';
+import { ReactComponent as Icon } from './icon.svg';
+import './SearchForm.css';
 
 type SearchFormProps = {
   submitHandler: FormEventHandler, 

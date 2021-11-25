@@ -1,11 +1,7 @@
 import './SearchSuggestionsList.css';
 
 type SearchSuggestionsListProps = {
-  items: object[]
-}
-
-type ItemObject = {
-  [key: string]: any
+  items: { id: string | number, title: string }[]
 }
 
 function SearchSuggestionsList(
@@ -16,7 +12,7 @@ function SearchSuggestionsList(
   return (
     <div className='search-list'>
       <ul className='search-list__list'>
-        {elements.map((el: ItemObject) => (
+        {elements.map((el) => (
           <li 
             className='search-list__item'
             key={el.id}
