@@ -21,7 +21,10 @@ function Footer() {
   ];
   return (
     <div className="footer">
-      <DeveloperList developers={developers} />
+      <div className="footer__content">
+        <DeveloperList developers={developers} />
+        <div>Тут будет лого</div>
+      </div>
     </div>
   );
 }

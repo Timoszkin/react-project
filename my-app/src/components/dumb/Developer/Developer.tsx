@@ -1,4 +1,5 @@
 import React from "react";
+import "./Developer.css";
 
 type DeveloperProp = {
   fullname: string;
@@ -7,9 +8,11 @@ type DeveloperProp = {
 
 function Developer({ fullname, link }: DeveloperProp) {
   return (
-    <li>
+    <li className="dev-list__item">
       <span>{fullname}</span>
-      <a href={link}>Telegram</a>
+      <a className="dev-list__link" href={link}>
+        Telegram
+      </a>
     </li>
   );
 }

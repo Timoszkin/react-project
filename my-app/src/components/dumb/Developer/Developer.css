@@ -1,0 +1,29 @@
+.dev-list__item {
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  position: relative;
+  height: 40px;
+  align-items: center;
+}
+
+.dev-list__link {
+  color: navy;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.dev-list__link:hover {
+  background-color: skyblue;
+  color: black;
+  transition: .3s;
+}
+
+@media screen and (min-width: 320px) and (max-width: 850px) {
+  .dev-list__item {
+    flex-direction: column;
+    margin-bottom: 15px;
+    align-items: flex-start;
+  }
+}

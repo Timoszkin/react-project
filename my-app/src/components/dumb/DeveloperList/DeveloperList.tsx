@@ -1,4 +1,5 @@
 import React from "react";
+import "./DeveloperList.css";
 import Developer from "../Developer/Developer";
 
 type DeveloperListProp = {
@@ -10,7 +11,7 @@ function DeveloperList({ developers }: DeveloperListProp) {
     <Developer fullname={dev.fullname} link={dev.link} />
   ));
 
-  return <ul>{devs}</ul>;
+  return <ul className="dev-list">{devs}</ul>;
 }
 
 export default DeveloperList;
