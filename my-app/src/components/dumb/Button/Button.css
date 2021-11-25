@@ -1,0 +1,19 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  background: transparent;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: teal;
+  border: 1px teal solid;
+  border-radius: 10px; 
+  font-weight: bold;
+}
+
+.button:hover {
+  background: teal;
+  color: white;
+  transition: .5s;
+}

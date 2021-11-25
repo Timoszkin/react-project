@@ -1,0 +1,27 @@
+.header {
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px teal;
+}
+
+.header__content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 90%;
+  margin: 0 auto;
+  align-items: center;
+  height: 80px;
+}
+
+.header__actions {
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__user {
+  margin: 0;
+}
