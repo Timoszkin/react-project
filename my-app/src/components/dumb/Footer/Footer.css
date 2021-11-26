@@ -1,0 +1,15 @@
+.footer {
+  width: 100%;
+  background-color: teal;
+  color: white;
+  position: absolute;
+  bottom: 0;
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 90%;
+  margin: 0 auto;
+}
