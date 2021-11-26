@@ -1,0 +1,14 @@
+.movie__poster {
+  border-radius: 10%;
+  height: 360px;
+  width: 240px;
+  object-fit: cover;
+  margin: 20px
+}
+
+.movie__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  list-style: none;
+}
