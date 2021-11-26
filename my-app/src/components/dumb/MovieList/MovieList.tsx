@@ -1,10 +1,13 @@
 import './MovieList.css'
+import { TMDB_IMAGE_PATH } from '../../../api/movieImageLink'
+
+type MovieResults = {
+  link: string,
+  poster_path: string,
+}
 
 type MovieListProps = {
-  results: {
-    link: string,
-    poster_path: string,
-  }[]
+  results: MovieResults[],
 }
 
 export const MovieList = (props: MovieListProps) => {
@@ -19,7 +22,7 @@ export const MovieList = (props: MovieListProps) => {
           key={el.link}
         >
           <img
-            src={'https://image.tmdb.org/t/p/original/'.concat(el.poster_path)}
+            src={TMDB_IMAGE_PATH.concat(el.poster_path)}
             alt="movie poster"
             className="movie__poster"
           />

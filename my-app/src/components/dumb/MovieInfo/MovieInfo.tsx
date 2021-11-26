@@ -1,4 +1,5 @@
 import './MovieInfo.css'
+import { TMDB_IMAGE_PATH } from '../../../api/movieImageLink'
 
 type MovieIndoProps = {
   name: string;
@@ -16,7 +17,7 @@ export const MovieInfo = (props: MovieIndoProps) => {
     <div
       className="movie__background"
       style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/original/${posterPath})`,
+        backgroundImage: `url(${TMDB_IMAGE_PATH}${posterPath})`,
       }}
     >
       <div
