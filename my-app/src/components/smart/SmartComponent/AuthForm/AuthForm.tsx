@@ -1,26 +1,26 @@
 import { useState } from "react";
 import "./AuthForm.css";
 
-export default function Form() {
+export default function AuthForm() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoginPage, setIsLoginPage] = useState(true);
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
 
-  const onSubmit = (event: any) => {
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoggedIn(true);
   };
 
-  const emailOnChange = (event: any) => {
-    setUserEmail(event.target.value);
+  const emailOnChange = (event: React.FormEvent<HTMLInputElement>) => {
+    setUserEmail(event.currentTarget.value);
   };
 
-  const passwordOnChange = (event: any) => {
-    setUserPassword(event.target.value);
+  const passwordOnChange = (event: React.FormEvent<HTMLInputElement>) => {
+    setUserPassword(event.currentTarget.value);
   };
 
-  const loginSignupToggle = (event: any) => {
+  const loginSignupToggle = (event: React.FormEvent<HTMLButtonElement>) => {
     setIsLoginPage(!isLoginPage);
   };
 
