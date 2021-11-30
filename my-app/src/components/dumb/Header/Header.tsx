@@ -7,13 +7,17 @@ type HeaderProp = {
 };
 
 function Header({ email }: HeaderProp) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   let headerActions;
+  // const headerFavourite = <a className="header__link header__favourites" href="#">Избранное</a>;
+
   if (isLoggedIn) {
     // если авторизован
     headerActions = (
-      <div className="header__actions">
-        <h1 className="header__user">{email}</h1>
+      <div className="header__actions_auth">
+        <a className="header__link" href="#">Избранное</a>
+        <a className="header__link" href="#">История</a>
+        <span className="header__user">{email}</span>
         <Button text="Выйти" />
       </div>
     );

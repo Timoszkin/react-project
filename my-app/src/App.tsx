@@ -53,10 +53,11 @@ function App() {
   }
   return (
     <div className="App">
-      <Header email="awdawdawwdaw" />
-      <Footer />
+      <Header email="test@gmail.com" />
+      
       <MovieList {...list}/>
       <MovieInfo {...someMovie}/>
+      <Footer />
     </div>
   );
 }
