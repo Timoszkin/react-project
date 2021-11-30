@@ -16,10 +16,12 @@ export const ThemeProvider: React.FC = ({ children }) => {
 
   const backgroundColor =
     theme === "light" ? "rgba(216, 255, 133, 0.8)" : "rgba(129, 173, 199, 0.5)";
+  const themedEl = document.querySelector<HTMLElement>(".authForm");
 
   useEffect(() => {
-    document.querySelector<HTMLElement>(".authForm")!.style.backgroundColor =
-      backgroundColor;
+    if (themedEl !== null) {
+      themedEl!.style.backgroundColor = backgroundColor;
+    }
   });
 
   return (
