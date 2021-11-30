@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Header.css";
 import Button from "../Button/Button";
+import { connect } from 'react-redux'
+import { RootState } from "../../../app/store";
 
 type HeaderProp = {
   email: string;
 };
 
 function Header({ email }: HeaderProp) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   let headerActions;
-  if (isLoggedIn) {
+  if (email.length > 1) {
     // если авторизован
     headerActions = (
       <div className="header__actions">
@@ -37,4 +38,10 @@ function Header({ email }: HeaderProp) {
   );
 }
 
-export default Header;
+const mapStateToProps = (state: RootState) => {
+  return {
+    email: state.userSlice.email
+  }
+}
+
+export default connect(mapStateToProps)(Header);

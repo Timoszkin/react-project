@@ -1,4 +1,3 @@
-
 import React from 'react';
 import './App.css';
 import "./App.css";
@@ -6,41 +5,43 @@ import Footer from "./components/dumb/Footer/Footer";
 import Header from "./components/dumb/Header/Header";
 import { MovieInfo } from './components/dumb/MovieInfo';
 import { MovieList } from './components/dumb/MovieList';
+import AuthForm from './components/smart/AuthForm/AuthForm';
 
 function App() {
+
   // two variables to test MovieList and MovieInfo components
   let list = {
-    results :
-    [
-      {
-      link: 'asdf',
-      poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
-    },
-      {
-      link: 'asdf',
-      poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
-    },
-      {
-      link: 'asdf',
-      poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
-    },
-      {
-      link: 'asdf',
-      poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
-    },
-      {
-      link: 'asdf',
-      poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
-    },
-      {
-      link: 'asdf',
-      poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
-    },
-      {
-      link: 'asdf',
-      poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
-    },
-  ],
+    results:
+      [
+        {
+          link: 'asdf',
+          poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
+        },
+        {
+          link: 'asdf',
+          poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
+        },
+        {
+          link: 'asdf',
+          poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
+        },
+        {
+          link: 'asdf',
+          poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
+        },
+        {
+          link: 'asdf',
+          poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
+        },
+        {
+          link: 'asdf',
+          poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
+        },
+        {
+          link: 'asdf',
+          poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
+        },
+      ],
   }
 
   let someMovie = {
@@ -51,12 +52,14 @@ function App() {
     director: 'Groger likas',
     year: 2012,
   }
+
   return (
     <div className="App">
-      <Header email="awdawdawwdaw" />
+      <Header />
       <Footer />
-      <MovieList {...list}/>
-      <MovieInfo {...someMovie}/>
+      <MovieList {...list} />
+      <MovieInfo {...someMovie} />
+      <AuthForm />
     </div>
   );
 }
