@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ThemeContext } from "../Context/ThemeProvider";
 import "./AuthForm.css";
 
 export default function AuthForm() {
@@ -6,6 +7,7 @@ export default function AuthForm() {
   const [isLoginPage, setIsLoginPage] = useState(true);
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -70,6 +72,11 @@ export default function AuthForm() {
         <div>
           <button className="authForm_toggleButton" onClick={loginSignupToggle}>
             {loginSignupToggleButton}
+          </button>
+        </div>
+        <div>
+          <button className="authForm_toggleButton" onClick={toggleTheme}>
+            Toggle background color
           </button>
         </div>
       </form>

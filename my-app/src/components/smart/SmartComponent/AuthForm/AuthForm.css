@@ -42,3 +42,7 @@
 .authForm_input:hover {
   border: 1px solid #aaa;
 }
+
+.authForm_toggleButton{
+  margin-bottom: 5px;
+}
