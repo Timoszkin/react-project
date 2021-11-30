@@ -1,9 +1,13 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./AuthForm.css";
 
-export default function AuthForm() {
+type AuthFormProp = {
+  isSigninPage: boolean;
+};
+
+export default function AuthForm({ isSigninPage }: AuthFormProp) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoginPage, setIsLoginPage] = useState(true);
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
 
@@ -20,25 +24,28 @@ export default function AuthForm() {
     setUserPassword(event.currentTarget.value);
   };
 
-  const loginSignupToggle = (event: React.FormEvent<HTMLButtonElement>) => {
-    setIsLoginPage(!isLoginPage);
-  };
+  let submitButtonText = isSigninPage ? "Sign In" : "Sign Up";
 
-  let submitButtonText;
-  let loginSignupToggleButton;
+  let submitButton;
 
-  if (isLoginPage) {
-    submitButtonText = "Log In";
-    loginSignupToggleButton = "Go to register";
-  } else {
-    submitButtonText = "Sign Up";
-    loginSignupToggleButton = "Go to Log In";
+  if (isSigninPage) { // страница входа
+    submitButton = (
+      <Link to="/">
+        <button className="authForm_submitButton" type="submit">
+          {submitButtonText}
+        </button>
+      </Link>
+    );
   }
-  let submitButton = (
-    <button className="authForm_submitButton" type="submit">
-      {submitButtonText}
-    </button>
-  );
+  else {
+    submitButton = (
+      <Link to="/signin">
+        <button className="authForm_submitButton" type="submit">
+          {submitButtonText}
+        </button>
+      </Link>
+    );
+  }
 
   return (
     <div className="authForm_outerContainer">
@@ -67,11 +74,6 @@ export default function AuthForm() {
           />
         </div>
         {submitButton}
-        <div>
-          <button className="authForm_toggleButton" onClick={loginSignupToggle}>
-            {loginSignupToggleButton}
-          </button>
-        </div>
       </form>
     </div>
   );

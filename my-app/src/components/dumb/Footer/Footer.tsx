@@ -1,21 +1,22 @@
 import "./Footer.css";
 import DeveloperList from "../DeveloperList/DeveloperList";
+
 function Footer() {
   const developers = [
     {
-      fullname: "Тимофей Фесенко",
+      fullname: "Fesenko Tymofii",
       link: "https://t.me/TimaFesenko",
     },
     {
-      fullname: "Терехова Ольга",
+      fullname: "Terekhova Olga",
       link: "https://t.me/JenFlower",
     },
     {
-      fullname: "Давыдов Кирилл",
+      fullname: "Davydov Kirill",
       link: "https://t.me/vtbsky",
     },
     {
-      fullname: "Никифорова Татьяна",
+      fullname: "Nikiforova Tatiana",
       link: "https://t.me/tatiananfrank",
     },
   ];
@@ -23,7 +24,7 @@ function Footer() {
     <div className="footer">
       <div className="footer__content">
         <DeveloperList developers={developers} />
-        <div>Тут будет лого</div>
+        <div>There will be Logo</div>
       </div>
     </div>
   );
