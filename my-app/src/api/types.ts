@@ -1,6 +1,17 @@
 interface Movie {
   id: number,
   title: string,
+  originalTitle: string,
+  releaseDate: string,
+  overview: string,
+  voteAverage: number,
+  posterPath: string,
+  backdropPath: string
+}
+
+type Response = {
+  id: number,
+  title: string,
   original_title: string,
   release_date: string,
   overview: string,
@@ -9,4 +20,4 @@ interface Movie {
   backdrop_path: string,
 }
 
-export default Movie;
+export type { Movie, Response };
