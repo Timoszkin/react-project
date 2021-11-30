@@ -7,17 +7,30 @@ export const movieSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.themoviedb.org/3' }),
   endpoints: (builder) => ({
     getMovieByID: builder.query<Movie, number | string>({
-      query: (id) => 
-        `/movie/${id}?api_key=${apiConfig.key}`
+      query: (id: number | string) => ({
+        url: `/movie/${id}`,
+        params: {
+          api_key: apiConfig.key
+        }
+      })
     }),
     getPopularMovies: builder.query<Movie[], void>({
-      query: () => 
-        `/movie/popular?api_key=${apiConfig.key}`,
+      query: () => ({
+        url: `/movie/popular`,
+        params: {
+          api_key: apiConfig.key
+        }
+      }),
       transformResponse: (response: { results: Movie[] }) => response.results
     }),
     getMoviesByTitle: builder.query<Movie[], string>({
-      query: (title) => 
-        `/search/movie?api_key=${apiConfig.key}&query=${encodeURIComponent(title)}`,
+      query: (title: string) => ({
+        url: `/search/movie`,
+        params: {
+          api_key: apiConfig.key,
+          query: title
+        }
+      }),
       transformResponse: (response: { results: Movie[] }) => response.results
     })
   })
