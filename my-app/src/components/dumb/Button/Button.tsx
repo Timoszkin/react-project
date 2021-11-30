@@ -2,7 +2,7 @@ import './Button.css'
 
 type ButtonProp = {
   text: string,
-  funcClick: any
+  funcClick: React.MouseEventHandler<HTMLButtonElement>
 }
 
 function Button({ text, funcClick }: ButtonProp) {

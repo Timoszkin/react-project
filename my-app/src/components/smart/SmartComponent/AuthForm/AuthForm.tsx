@@ -26,26 +26,13 @@ export default function AuthForm({ isSigninPage }: AuthFormProp) {
 
   let submitButtonText = isSigninPage ? "Sign In" : "Sign Up";
 
-  let submitButton;
-
-  if (isSigninPage) { // страница входа
-    submitButton = (
-      <Link to="/">
-        <button className="authForm_submitButton" type="submit">
-          {submitButtonText}
-        </button>
-      </Link>
-    );
-  }
-  else {
-    submitButton = (
-      <Link to="/signin">
-        <button className="authForm_submitButton" type="submit">
-          {submitButtonText}
-        </button>
-      </Link>
-    );
-  }
+  let submitButton = (
+    <Link to="/">
+      <button className="authForm_submitButton" type="submit">
+        {submitButtonText}
+      </button>
+    </Link>
+  );
 
   return (
     <div className="authForm_outerContainer">

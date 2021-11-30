@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-// import { Route, Switch } from 'react-router'
-import { Routes, Route, useParams, NavLink, Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "./Header.css";
 import Button from "../Button/Button";
 
@@ -20,13 +19,16 @@ function Header({ email }: HeaderProp) {
     // если авторизован
     headerActions = (
       <div className="header__actions_auth">
-        <NavLink className="header__link" to="/favourites">Favourites</NavLink>
-        <NavLink className="header__link" to="/history">History</NavLink>
+        <NavLink className="header__link" to="/favourites">
+          Favourites
+        </NavLink>
+        <NavLink className="header__link" to="/history">
+          History
+        </NavLink>
         <span className="header__user">{email}</span>
         <Link to="/">
-          <Button text="Sign Out" funcClick={toggleLoginState}/>
+          <Button text="Sign Out" funcClick={toggleLoginState} />
         </Link>
-        
       </div>
     );
   } else {
@@ -34,22 +36,34 @@ function Header({ email }: HeaderProp) {
     headerActions = (
       <div className="header__actions">
         <Link to="/signup">
-          <Button text="Sign Up" funcClick={() => {console.log('signup')}}/>
+          <Button
+            text="Sign Up"
+            funcClick={() => {
+              console.log("signup");
+            }}
+          />
         </Link>
         <Link to="/signin">
-          <Button text="Sign In" funcClick={() => {console.log('signin')}}/>
+          <Button
+            text="Sign In"
+            funcClick={() => {
+              console.log("signin");
+            }}
+          />
         </Link>
-      </div>     
+      </div>
     );
   }
 
   return (
-      <header className="header">
-        <div className="header__content">
-            <Link to='/'><div className="header__logo">There will be Logo</div></Link>
-            {headerActions}
-        </div>
-      </header>    
+    <header className="header">
+      <div className="header__content">
+        <Link to="/">
+          <div className="header__logo">There will be Logo</div>
+        </Link>
+        {headerActions}
+      </div>
+    </header>
   );
 }
 
