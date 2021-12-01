@@ -1,10 +1,15 @@
 import React from 'react';
+import {
+  Route,
+  Routes
+} from "react-router-dom";
 import './App.css';
 import "./App.css";
 import Footer from "./components/dumb/Footer/Footer";
 import Header from "./components/dumb/Header/Header";
 import { MovieInfo } from './components/dumb/MovieInfo';
 import { MovieList } from './components/dumb/MovieList';
+import { SearchHistoryList } from './components/dumb/SearchHistoryList';
 import AuthForm from './components/smart/AuthForm/AuthForm';
 
 function App() {
@@ -55,10 +60,15 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <Routes>
+        <Route path='/signin' element={<AuthForm isLoginPage={true}/>}/>
+        <Route path='/signup' element={<AuthForm isLoginPage={false}/>}/>
+        <Route path='/history' element={<SearchHistoryList results={[{link: 'asdf', query: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg'} ]}/>} />
+      </Routes>
+
+      <MovieList {...list}/>
+      <MovieInfo {...someMovie}/>
       <Footer />
-      <MovieList {...list} />
-      <MovieInfo {...someMovie} />
-      <AuthForm />
     </div>
   );
 }

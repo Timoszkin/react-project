@@ -1,12 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import userReducer from '../features/user/userSlice';
-import counterReducer from '../features/counter/counterSlice';
 import { movieSlice } from '../api/movieSlice';
 
 export const store = configureStore({
   reducer: {
     userSlice: userReducer,
-    counter: counterReducer,
+    // counter: counterReducer,
     [movieSlice.reducerPath]: movieSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => 

@@ -4,9 +4,13 @@ import { setUser } from "../../../features/user/userSlice";
 import "./AuthForm.css";
 import { User } from "../../../types/User";
 
-export default function AuthForm() {
+type AuthFormProp = {
+  isLoginPage: boolean;
+};
+
+export default function AuthForm({ isLoginPage }: AuthFormProp) {
   const dispatch = useDispatch();
-  const [isLoginPage, setIsLoginPage] = useState(true);
+  // const [isLoginPage, setIsLoginPage] = useState(true);
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [warningField, setWarning] = useState({
@@ -15,7 +19,7 @@ export default function AuthForm() {
     type: ''
   })
   const localStorageUser = localStorage.getItem('user') || '[]';
-
+  
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (isLoginPage) {
@@ -39,9 +43,6 @@ export default function AuthForm() {
     }
   };
 
-  const loginSignupToggle = (event: React.FormEvent<HTMLButtonElement>) => {
-    setIsLoginPage(!isLoginPage);
-  };
 
   const handleLogin = () => {
     const userListString: string = localStorage.getItem('user') || '[]';
@@ -155,11 +156,6 @@ export default function AuthForm() {
           />
         </div>
         {submitButton}
-        <div>
-          <button className="authForm_toggleButton" onClick={loginSignupToggle}>
-            {loginSignupToggleButton}
-          </button>
-        </div>
         {warningField.isDisplayed &&
           <span
             className="authForm_warningField"
