@@ -25,3 +25,7 @@
 
   cursor: pointer;
 }
+
+.search-form__btn:hover svg {
+  fill: #5c5c5c;
+}

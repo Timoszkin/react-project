@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import "./Header.css";
 import Button from "../Button/Button";
+import { useDispatch } from 'react-redux'
+import { resetUser } from '../../../features/user/userSlice'
+import { RootState } from '../../../app/store'
+import { useSelector, shallowEqual } from 'react-redux'
 
-type HeaderProp = {
-  email: string;
-};
+export default function Header() {
+  const email = useSelector((state: RootState) => state.userSlice.email, shallowEqual)
 
-function Header({ email }: HeaderProp) {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  let headerActions;
-
-  function toggleLoginState(): void {
-    setIsLoggedIn(!isLoggedIn);
+  const dispatch = useDispatch();
+  const signOut = ():void => {
+    dispatch(resetUser())
   }
-
-  if (isLoggedIn) {
+  let headerActions;
+  if (email.length > 1) {
     // если авторизован
     headerActions = (
       <div className="header__actions_auth">
@@ -27,7 +27,7 @@ function Header({ email }: HeaderProp) {
         </NavLink>
         <span className="header__user">{email}</span>
         <Link to="/">
-          <Button text="Sign Out" funcClick={toggleLoginState} />
+          <Button text="Sign Out" handleClick={signOut} />
         </Link>
       </div>
     );
@@ -38,17 +38,11 @@ function Header({ email }: HeaderProp) {
         <Link to="/signup">
           <Button
             text="Sign Up"
-            funcClick={() => {
-              console.log("signup");
-            }}
           />
         </Link>
         <Link to="/signin">
           <Button
             text="Sign In"
-            funcClick={() => {
-              console.log("signin");
-            }}
           />
         </Link>
       </div>
@@ -66,5 +60,3 @@ function Header({ email }: HeaderProp) {
     </header>
   );
 }
-
-export default Header;

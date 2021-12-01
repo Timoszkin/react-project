@@ -1,14 +1,19 @@
-import { ChangeEventHandler, FormEventHandler } from 'react';
+import { ChangeEvent, FormEventHandler } from 'react';
 import { ReactComponent as Icon } from './icon.svg';
 import './SearchForm.css';
 
 type SearchFormProps = {
   submitHandler: FormEventHandler, 
-  inputChangeHandler: ChangeEventHandler
+  setSearchValueCallback: Function,
+  showSuggestionsCallback: Function,
 }
 
 function SearchForm(
-  {submitHandler, inputChangeHandler}: SearchFormProps
+  {
+    submitHandler, 
+    setSearchValueCallback, 
+    showSuggestionsCallback
+  }: SearchFormProps
 ) {
   return (
     <form 
@@ -18,8 +23,10 @@ function SearchForm(
       <input 
         className='search-form__input' 
         type='text' 
-        placeholder='Type something'
-        onChange={inputChangeHandler}
+        placeholder='Search movie'
+        onChange={(event: ChangeEvent<HTMLInputElement>) => 
+          setSearchValueCallback(event.target.value)}
+        onFocus={() => showSuggestionsCallback(true)}
       />
       <button 
         className='search-form__btn' 

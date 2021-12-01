@@ -1,14 +1,21 @@
-import './Button.css'
+import "./Button.css";
 
 type ButtonProp = {
-  text: string,
-  funcClick: React.MouseEventHandler<HTMLButtonElement>
-}
+  text: string;
+  handleClick?: VoidFunction;
+};
 
-function Button({ text, funcClick }: ButtonProp) {
+function Button({ text, handleClick }: ButtonProp) {
+  const onClick = () => {
+    if (handleClick) {
+      handleClick();
+    }
+  };
   return (
-    <button type='button' className='button' onClick={funcClick}>{text}</button>
-  )
+    <button type="button" className="button" onClick={onClick}>
+      {text}
+    </button>
+  );
 }
 
 export default Button;

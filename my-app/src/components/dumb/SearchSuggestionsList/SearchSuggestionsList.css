@@ -29,6 +29,15 @@
   border-bottom-right-radius: 2px;
 }
 
+.search-list__item_loading,
+.search-list__item_error,
+.search-list__item_no-results {
+  padding: 4px 5px;
+
+  color: #000000;
+  font-size: 14px;
+}
+
 .search-list__item a {
   display: block;
   box-sizing: border-box;
@@ -39,4 +48,8 @@
   font-size: 14px;
   text-align: left;
   text-decoration: none;
+}
+
+.search-list__item a:hover {
+  color: #5c5c5c;
 }
