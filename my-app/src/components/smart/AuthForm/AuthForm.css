@@ -43,6 +43,10 @@
   border: 1px solid #aaa;
 }
 
+
+.authForm_toggleButton{
+  margin-bottom: 5px;
+}
 .authForm_warningField {
   width: fit-content;
   display: block;
