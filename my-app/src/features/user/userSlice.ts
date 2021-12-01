@@ -24,6 +24,8 @@ export const userSlice = createSlice({
       }
     },
     setUser: (state, action) => {
+      console.log('ok');
+      
       return {
         ...action.payload
       }

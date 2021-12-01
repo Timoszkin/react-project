@@ -72,6 +72,8 @@ export default function AuthForm() {
 
       return;
     } else {
+      console.log(foundUser);
+      
       dispatch(setUser(foundUser))
       setUserEmail('')
       setUserPassword('')

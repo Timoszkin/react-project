@@ -8,7 +8,6 @@ import { MovieList } from './components/dumb/MovieList';
 import AuthForm from './components/smart/AuthForm/AuthForm';
 
 function App() {
-
   // two variables to test MovieList and MovieInfo components
   let list = {
     results:
