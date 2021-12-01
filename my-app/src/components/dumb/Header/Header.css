@@ -1,8 +1,9 @@
 .header {
-  margin: 0 auto;
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 10px teal;
+  width: 100%;
+  font-size: 15px;
 }
 
 .header__content {
@@ -16,7 +17,15 @@
 
 .header__actions {
   display: grid;
-  grid-template-columns: 1fr 100px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__actions_auth {
+  display: grid;
+  grid-template-columns: repeat(2, 100px) repeat(2, 1fr);
   gap: 15px;
   justify-content: center;
   align-items: center;
@@ -24,4 +33,12 @@
 
 .header__user {
   margin: 0;
+  font-weight: bold;
+}
+
+.header__link {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: teal;
+  font-weight: bold;
 }

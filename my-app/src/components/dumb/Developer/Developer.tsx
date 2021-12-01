@@ -10,7 +10,7 @@ function Developer({ fullname, link }: DeveloperProp) {
   return (
     <li className="dev-list__item">
       <span>{fullname}</span>
-      <a className="dev-list__link" href={link}>
+      <a target="_blank" className="dev-list__link" href={link}>
         Telegram
       </a>
     </li>

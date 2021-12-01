@@ -1,10 +1,15 @@
+
 import { useState, useContext } from "react";
 import { ThemeContext } from "../Context/ThemeProvider";
+import { Link } from "react-router-dom";
 import "./AuthForm.css";
 
-export default function AuthForm() {
+type AuthFormProp = {
+  isSigninPage: boolean;
+};
+
+export default function AuthForm({ isSigninPage }: AuthFormProp) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoginPage, setIsLoginPage] = useState(true);
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -22,24 +27,14 @@ export default function AuthForm() {
     setUserPassword(event.currentTarget.value);
   };
 
-  const loginSignupToggle = (event: React.FormEvent<HTMLButtonElement>) => {
-    setIsLoginPage(!isLoginPage);
-  };
+  let submitButtonText = isSigninPage ? "Sign In" : "Sign Up";
 
-  let submitButtonText;
-  let loginSignupToggleButton;
-
-  if (isLoginPage) {
-    submitButtonText = "Log In";
-    loginSignupToggleButton = "Go to register";
-  } else {
-    submitButtonText = "Sign Up";
-    loginSignupToggleButton = "Go to Log In";
-  }
   let submitButton = (
-    <button className="authForm_submitButton" type="submit">
-      {submitButtonText}
-    </button>
+    <Link to="/">
+      <button className="authForm_submitButton" type="submit">
+        {submitButtonText}
+      </button>
+    </Link>
   );
 
   return (
@@ -69,11 +64,11 @@ export default function AuthForm() {
           />
         </div>
         {submitButton}
-        <div>
+        {/* <div>
           <button className="authForm_toggleButton" onClick={loginSignupToggle}>
             {loginSignupToggleButton}
           </button>
-        </div>
+        </div> */}
         <div>
           <button className="authForm_toggleButton" onClick={toggleTheme}>
             Toggle background color

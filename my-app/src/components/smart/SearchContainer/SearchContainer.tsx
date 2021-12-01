@@ -1,42 +1,47 @@
-import { ChangeEvent, FormEvent } from 'react';
+import { useRef, FormEvent, useCallback, useEffect, useState } from 'react';
 import { debounce } from '../../../app/utils';
 import SearchForm from "../../dumb/SearchForm/SearchForm";
 import SearchSuggestionsList from "../../dumb/SearchSuggestionsList/SearchSuggestionsList";
 
+const DEBOUNCE_DELAY = 800;
+
 function SearchContainer() {
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value); // for tests only
-    // call API for data
-    // format data
-    // show data in the searchSuggestionsList
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
+  const handleOuterClick = (event: MouseEvent) => {
+    if (!searchRef?.current?.contains(event.target as Node)) {
+      setShowSuggestions(false);
+    }
   };
-  const debouncedHandleInputChange = debounce(handleInputChange, 1500);
+  useEffect(() => {
+    document.addEventListener('click', handleOuterClick);
+    return () => document.removeEventListener('click', handleOuterClick);
+  }, []);
 
-  const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log('submit'); // for tests only
-    // save search history (local storage)
-    // call API for data
-    // format data
-    // show search results (?)
-  };
-
-  const testItems = [
-    {id: 0, title: 'Title 1'}, 
-    {id: 1, title: 'Title 2'}, 
-    {id: 2, title: 'Title 3'},
-    {id: 3, title: 'Title 4'}, 
-    {id: 4, title: 'Title 5'}, 
-    {id: 5, title: 'Title 6'}
-  ]; // for tests only
+  const [searchValue, setSearchValue] = useState('');
+  const debouncedSetSearchValue = useCallback(
+    debounce(setSearchValue, DEBOUNCE_DELAY)
+  , []);
+  
+  const handleFormSubmit = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      console.log('submit'); // for tests only
+      // save search history (local storage)
+      // call API for data
+      // format data
+      // show search results (?)
+  }, []);
 
   return (
-    <div>
+    <div ref={searchRef}>
       <SearchForm 
-        submitHandler={handleFormSubmit} 
-        inputChangeHandler={debouncedHandleInputChange}
+        submitHandler={handleFormSubmit}
+        showSuggestionsCallback={setShowSuggestions} 
+        setSearchValueCallback={debouncedSetSearchValue}
       />
-      <SearchSuggestionsList items={testItems}/>
+      {searchValue && showSuggestions &&
+        <SearchSuggestionsList searchValue={searchValue}/>}
     </div>
   );
 }

@@ -1,13 +1,21 @@
-import './Button.css'
+import "./Button.css";
 
 type ButtonProp = {
-  text: string
-}
+  text: string;
+  handleClick?: VoidFunction;
+};
 
-function Button({ text }: ButtonProp) {
+function Button({ text, handleClick }: ButtonProp) {
+  const onClick = () => {
+    if (handleClick) {
+      handleClick();
+    }
+  };
   return (
-    <button type='button' className='button'>{text}</button>
-  )
+    <button type="button" className="button" onClick={onClick}>
+      {text}
+    </button>
+  );
 }
 
 export default Button;

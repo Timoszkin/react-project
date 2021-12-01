@@ -14,7 +14,9 @@ export const SearchHistoryList = (props: SearchHistoryListProps) => {
   return (
     <ul>
       {results.map(el => (
-        <li>
+        <li
+          key={el.link}
+        >
           <a href={el.link}>
             {el.query}
           </a>

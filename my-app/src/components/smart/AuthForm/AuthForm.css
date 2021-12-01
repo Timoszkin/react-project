@@ -43,6 +43,22 @@
   border: 1px solid #aaa;
 }
 
+
 .authForm_toggleButton{
   margin-bottom: 5px;
+}
+.authForm_warningField {
+  width: fit-content;
+  display: block;
+  margin-top: 20px;
+  color: rgb(221, 17, 17);
+}
+
+.authForm_warningField::after
+{
+  display: block;
+  position: relative;
+  content: '';
+  border-bottom: 2px solid rgb(248, 57, 57);
+  width: 100%;
 }
