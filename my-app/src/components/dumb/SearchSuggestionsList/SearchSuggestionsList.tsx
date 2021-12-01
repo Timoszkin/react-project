@@ -1,6 +1,5 @@
-import { Link } from 'react-router-dom';
 import { useGetMoviesByTitleQuery } from '../../../api/movieSlice';
-import { Movie } from '../../../api/types';
+import SearchSuggestionsItem from './SearchSuggestionsItem';
 import './SearchSuggestionsList.css';
 
 type SearchSuggestionsListProps = {
@@ -47,21 +46,6 @@ function SearchSuggestionsList(
         {content}
       </ul>
     </div>
-  );
-}
-
-function SearchSuggestionsItem(
-  {id, title, releaseDate}: Movie
-) {
-  const path = `/movie/${id}`;
-  const year = releaseDate.slice(0, 4);
-
-  return (
-    <li className='search-list__item'>
-      <Link to={path}>
-        {`${title} (${year})`}
-      </Link>
-    </li>
   );
 }
 
