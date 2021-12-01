@@ -1,27 +1,67 @@
+import { Link } from 'react-router-dom';
+import { useGetMoviesByTitleQuery } from '../../../api/movieSlice';
+import { Movie } from '../../../api/types';
 import './SearchSuggestionsList.css';
 
 type SearchSuggestionsListProps = {
-  items: { id: string | number, title: string }[]
+  searchValue: string,
 }
 
 function SearchSuggestionsList(
-  {items}: SearchSuggestionsListProps
+  {searchValue}: SearchSuggestionsListProps
 ) {
-  const elements = items.length > 5 ? items.slice(0, 5) : items;
+  const { 
+    data: movies = [],
+    isFetching,
+    isSuccess,
+    isError
+  } = useGetMoviesByTitleQuery(searchValue);
+
+  let content;
+  if (isFetching) {
+    content = (
+      <li className='search-list__item search-list__item_loading'>
+        Loading...
+      </li>
+    );
+  } else if (isSuccess) {
+    content = (movies.length > 0) ?
+      movies.slice(0, 5).map((movie) => 
+        <SearchSuggestionsItem key={movie.id} {...movie}/>
+      ) : (
+        <li className='search-list__item search-list__item_no-results'>
+          Nothing found
+        </li>
+      );
+  } else if (isError) { 
+    content = (
+      <li className='search-list__item search-list__item_error'>
+        Oops, something went wrong
+      </li>
+    );
+  }
   
   return (
     <div className='search-list'>
       <ul className='search-list__list'>
-        {elements.map((el) => (
-          <li 
-            className='search-list__item'
-            key={el.id}
-          >
-            <a href='#'>{el.title}</a>
-          </li>
-        ))}
+        {content}
       </ul>
     </div>
+  );
+}
+
+function SearchSuggestionsItem(
+  {id, title, releaseDate}: Movie
+) {
+  const path = `/movie/${id}`;
+  const year = releaseDate.slice(0, 4);
+
+  return (
+    <li className='search-list__item'>
+      <Link to={path}>
+        {`${title} (${year})`}
+      </Link>
+    </li>
   );
 }
 
