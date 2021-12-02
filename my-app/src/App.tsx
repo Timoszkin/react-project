@@ -67,8 +67,6 @@ function App() {
         <Route path='/signin' element={<AuthForm isLoginPage={true}/>}/>
         <Route path='/signup' element={<AuthForm isLoginPage={false}/>}/>
         <Route path='/history' element={<SearchHistoryList results={[{link: 'asdf', query: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg'} ]}/>} />
-        <Route path='/movie' element={<SearchSuggestionsList searchValue="awdawd"/>} />
-
       </Routes>
 
       <MovieList {...list}/>

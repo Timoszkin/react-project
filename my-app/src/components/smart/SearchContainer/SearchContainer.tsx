@@ -33,9 +33,9 @@ function SearchContainer() {
       // format data
       // show search results (?)
       if(searchValue.length !== 0)
-        navigate(`/movie?search/query=${searchValue}`)
+        navigate(`/search?query=${searchValue}`)
       else
-        navigate(`/`)  
+        navigate(`/search`)  
   }, [searchValue]);
 
   return (
