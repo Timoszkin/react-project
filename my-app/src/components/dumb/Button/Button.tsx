@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import "./Button.css";
 
-function Button(props) {
+function Button(props: any) {
   const onClick = () => {
     if (props.handleClick) {
       props.handleClick();
