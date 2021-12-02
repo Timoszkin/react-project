@@ -10,7 +10,9 @@ import Header from "./components/dumb/Header/Header";
 import { MovieInfo } from './components/dumb/MovieInfo';
 import { MovieList } from './components/dumb/MovieList';
 import { SearchHistoryList } from './components/dumb/SearchHistoryList';
+import SearchSuggestionsList from './components/dumb/SearchSuggestionsList/SearchSuggestionsList';
 import AuthForm from './components/smart/AuthForm/AuthForm';
+import SearchContainer from './components/smart/SearchContainer/SearchContainer';
 import ErrorBoundary from './components/smart/ErrorBoundary/ErrorBoundary';
 import Search from './pages/Search/Search';
 
@@ -61,6 +63,7 @@ function App() {
 
   return (
     <div className="App">
+
       <ErrorBoundary>
         <Header />
         <Routes>
@@ -69,8 +72,6 @@ function App() {
           <Route path='/history' element={<SearchHistoryList results={[{link: 'asdf', query: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg'} ]}/>} />
           <Route path='/search' element={<Search/>}/>
         </Routes>
-
-        {/* <MovieList {...list}/> */}
         <MovieInfo {...someMovie}/>
         <Footer />
       </ErrorBoundary>

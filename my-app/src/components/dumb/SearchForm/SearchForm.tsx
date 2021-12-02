@@ -5,7 +5,7 @@ import './SearchForm.css';
 type SearchFormProps = {
   submitHandler: FormEventHandler, 
   setSearchValueCallback: Function,
-  showSuggestionsCallback: Function,
+  showSuggestionsCallback: Function
 }
 
 function SearchForm(

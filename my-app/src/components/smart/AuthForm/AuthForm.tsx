@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 import { setUser } from "../../../features/user/userSlice";
 import "./AuthForm.css";
 import { User } from "../../../types/User";
@@ -18,6 +19,7 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
     warningMessage: '',
     type: ''
   })
+  const navigate = useNavigate();
   const localStorageUser = localStorage.getItem('user') || '[]';
   
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -78,6 +80,8 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
       dispatch(setUser(foundUser))
       setUserEmail('')
       setUserPassword('')
+      // after login move to main page
+      navigate('/');
     }
   }
 

@@ -1,21 +1,22 @@
+import PropTypes from 'prop-types';
 import "./Button.css";
 
-type ButtonProp = {
-  text: string;
-  handleClick?: VoidFunction;
-};
-
-function Button({ text, handleClick }: ButtonProp) {
+function Button(props: any) {
   const onClick = () => {
-    if (handleClick) {
-      handleClick();
+    if (props.handleClick) {
+      props.handleClick();
     }
   };
   return (
     <button type="button" className="button" onClick={onClick}>
-      {text}
+      {props.text}
     </button>
   );
+}
+
+Button.propTypes = {
+  text: PropTypes.string,
+  handleClick: PropTypes.func
 }
 
 export default Button;
