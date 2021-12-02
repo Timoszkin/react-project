@@ -12,6 +12,7 @@ import { MovieList } from './components/dumb/MovieList';
 import { SearchHistoryList } from './components/dumb/SearchHistoryList';
 import AuthForm from './components/smart/AuthForm/AuthForm';
 import ErrorBoundary from './components/smart/ErrorBoundary/ErrorBoundary';
+import Search from './pages/Search/Search';
 
 function App() {
   // two variables to test MovieList and MovieInfo components
@@ -66,9 +67,10 @@ function App() {
           <Route path='/signin' element={<AuthForm isLoginPage={true}/>}/>
           <Route path='/signup' element={<AuthForm isLoginPage={false}/>}/>
           <Route path='/history' element={<SearchHistoryList results={[{link: 'asdf', query: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg'} ]}/>} />
+          <Route path='/search' element={<Search/>}/>
         </Routes>
 
-        <MovieList {...list}/>
+        {/* <MovieList {...list}/> */}
         <MovieInfo {...someMovie}/>
         <Footer />
       </ErrorBoundary>
