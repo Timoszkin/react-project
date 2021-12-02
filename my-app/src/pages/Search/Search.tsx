@@ -1,5 +1,5 @@
 import { useQuery } from '../../app/hooks';
-import { useGetMoviesByTitleQuery } from '../../api/movieSlice';
+import { useGetMoviesQuery } from '../../api/movieSlice';
 import { MovieList } from '../../components/dumb/MovieList';
 import SearchContainer from '../../components/smart/SearchContainer/SearchContainer';
 import './Search.css';
@@ -13,7 +13,7 @@ function Search() {
     isFetching,
     isSuccess,
     isError,
-  } = useGetMoviesByTitleQuery(searchQuery);
+  } = useGetMoviesQuery(searchQuery, { skip: !searchQuery });
 
   let content;
   if (isFetching) {

@@ -8,11 +8,8 @@ import "./App.css";
 import Footer from "./components/dumb/Footer/Footer";
 import Header from "./components/dumb/Header/Header";
 import { MovieInfo } from './components/dumb/MovieInfo';
-import { MovieList } from './components/dumb/MovieList';
 import { SearchHistoryList } from './components/dumb/SearchHistoryList';
-import SearchSuggestionsList from './components/dumb/SearchSuggestionsList/SearchSuggestionsList';
 import AuthForm from './components/smart/AuthForm/AuthForm';
-import SearchContainer from './components/smart/SearchContainer/SearchContainer';
 import ErrorBoundary from './components/smart/ErrorBoundary/ErrorBoundary';
 import Search from './pages/Search/Search';
 

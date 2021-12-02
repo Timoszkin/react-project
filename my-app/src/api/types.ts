@@ -1,4 +1,4 @@
-interface Movie {
+type Movie = {
   id: number,
   title: string,
   originalTitle: string,
@@ -9,7 +9,7 @@ interface Movie {
   backdropPath: string
 }
 
-type Response = {
+interface Response {
   id: number,
   title: string,
   original_title: string,
