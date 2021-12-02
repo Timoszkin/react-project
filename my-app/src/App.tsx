@@ -13,6 +13,7 @@ import { SearchHistoryList } from './components/dumb/SearchHistoryList';
 import SearchSuggestionsList from './components/dumb/SearchSuggestionsList/SearchSuggestionsList';
 import AuthForm from './components/smart/AuthForm/AuthForm';
 import SearchContainer from './components/smart/SearchContainer/SearchContainer';
+import ErrorBoundary from './components/smart/ErrorBoundary/ErrorBoundary';
 
 function App() {
   // two variables to test MovieList and MovieInfo components
@@ -61,17 +62,18 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <SearchContainer />
-      <Routes>
-        <Route path='/signin' element={<AuthForm isLoginPage={true}/>}/>
-        <Route path='/signup' element={<AuthForm isLoginPage={false}/>}/>
-        <Route path='/history' element={<SearchHistoryList results={[{link: 'asdf', query: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg'} ]}/>} />
-      </Routes>
 
-      <MovieList {...list}/>
-      <MovieInfo {...someMovie}/>
-      <Footer />
+      <ErrorBoundary>
+        <Header />
+        <Routes>
+          <Route path='/signin' element={<AuthForm isLoginPage={true}/>}/>
+          <Route path='/signup' element={<AuthForm isLoginPage={false}/>}/>
+          <Route path='/history' element={<SearchHistoryList results={[{link: 'asdf', query: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg'} ]}/>} />
+        </Routes>
+        <MovieList {...list}/>
+        <MovieInfo {...someMovie}/>
+        <Footer />
+      </ErrorBoundary>
     </div>
   );
 }
