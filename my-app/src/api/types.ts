@@ -9,7 +9,7 @@ type Movie = {
   backdropPath: string
 }
 
-interface Response {
+interface ApiResponse {
   id: number,
   title: string,
   original_title: string,
@@ -20,4 +20,4 @@ interface Response {
   backdrop_path: string,
 }
 
-export type { Movie, Response };
+export type { Movie, ApiResponse };

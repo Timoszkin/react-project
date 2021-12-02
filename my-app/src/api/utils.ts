@@ -1,6 +1,6 @@
-import { Movie, Response } from "./types"
+import { Movie, ApiResponse } from "./types"
 
-const mapResponseProps = (response: Response): Movie => ({
+const mapApiResponseProps = (response: ApiResponse): Movie => ({
   id: response.id,
   title: response.title,
   originalTitle: response.original_title,
@@ -11,4 +11,4 @@ const mapResponseProps = (response: Response): Movie => ({
   backdropPath: response.backdrop_path,
 });
 
-export default mapResponseProps;
+export default mapApiResponseProps;

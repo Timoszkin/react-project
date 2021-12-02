@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import apiConfig from './apiConfig';
-import { Movie, Response } from './types';
-import mapResponseProps from './utils';
+import { Movie, ApiResponse } from './types';
+import mapApiResponseProps from './utils';
 
 export const movieSlice = createApi({
   reducerPath: 'movieAPI',
@@ -14,7 +14,7 @@ export const movieSlice = createApi({
           api_key: apiConfig.key,
         },
       }),
-      transformResponse: (response: Response) => mapResponseProps(response),
+      transformResponse: (response: ApiResponse) => mapApiResponseProps(response),
     }),
     getPopularMovies: builder.query<Movie[], void>({
       query: () => ({
@@ -23,8 +23,8 @@ export const movieSlice = createApi({
           api_key: apiConfig.key,
         },
       }),
-      transformResponse: (response: { results: Response[] }) =>
-        response.results.map((movie) => mapResponseProps(movie)),
+      transformResponse: (response: { results: ApiResponse[] }) =>
+        response.results.map((movie) => mapApiResponseProps(movie)),
     }),
     getMovies: builder.query<Movie[], string>({
       query: (title: string) => ({
@@ -34,8 +34,8 @@ export const movieSlice = createApi({
           query: title,
         },
       }),
-      transformResponse: (response: { results: Response[] }) =>
-        response.results.map((movie) => mapResponseProps(movie)),
+      transformResponse: (response: { results: ApiResponse[] }) =>
+        response.results.map((movie) => mapApiResponseProps(movie)),
     }),
   }),
 });
