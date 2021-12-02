@@ -21,7 +21,6 @@ function SearchContainer() {
   }, []);
 
   const [searchValue, setSearchValue] = useState('');
-  console.log('searchValue',searchValue)
   const debouncedSetSearchValue = useCallback(
     debounce(setSearchValue, DEBOUNCE_DELAY)
   , []);
