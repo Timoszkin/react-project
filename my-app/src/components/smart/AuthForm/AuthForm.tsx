@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 import { setUser } from "../../../features/user/userSlice";
 import "./AuthForm.css";
 import { User } from "../../../types/User";
+// import { ThemeContext } from "./context/ThemeProvider";
+
 
 type AuthFormProp = {
   isLoginPage: boolean;
@@ -11,7 +14,7 @@ type AuthFormProp = {
 
 export default function AuthForm({ isLoginPage }: AuthFormProp) {
   const dispatch = useDispatch();
-  // const [isLoginPage, setIsLoginPage] = useState(true);
+  // const { theme, toggleTheme } = useContext(ThemeContext);
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [warningField, setWarning] = useState({
@@ -75,12 +78,9 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
 
       return;
     } else {
-      console.log(foundUser);
-      
       dispatch(setUser(foundUser))
       setUserEmail('')
       setUserPassword('')
-      // after login move to main page
       navigate('/');
     }
   }
@@ -100,6 +100,7 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
       password: userPassword,
       history: [],
       favorites: [],
+      id: Number(new Date()),
     }, ...JSON.parse(localStorageUser)]);
 
     localStorage.setItem('user', usersInfo);
@@ -110,14 +111,11 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
   // render elements
 
   let submitButtonText;
-  let loginSignupToggleButton;
 
   if (isLoginPage) {
     submitButtonText = "Log In";
-    loginSignupToggleButton = "Switch to Register";
   } else {
     submitButtonText = "Sign Up";
-    loginSignupToggleButton = "Switch to Log In";
   }
   let submitButton = (
     <button
@@ -167,6 +165,17 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
             Warning: {warningField.warningMessage}
           </span>
         }
+        {/* <button className="authForm_toggleButton" onClick={toggleTheme}>
+            Toggle background color
+        </button> */}
+        <div
+         className="authForm_redirect"
+        >
+          <span>{isLoginPage ? "Don't have an account yet? " : "Already have an account? "}</span>
+          <Link to={isLoginPage ? "/signup" : "/signin"}>
+            {isLoginPage ? "Sign Up" : "Log in"}
+          </Link>
+        </div>
       </form>
     </div>
   );

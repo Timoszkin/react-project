@@ -18,23 +18,30 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     resetUser: (state) => {
-      console.log('reset');
       return {
         ...initialState
       }
     },
     setUser: (state, action) => {
-      console.log('ok');
-      
       return {
         ...action.payload
       }
     },
-    addFavorites: (state, action) => {
-      // state.favorites.push(action.payload) 
+    addFavorites: (state, action: { payload: string }) => {
+      console.log('added fav');
+      
+      return {
+        ...state,
+        favorites: [...state.favorites, action.payload]
+      }
     },
     removeFavorites: (state, action) => {
-      state.favorites.filter(el => el !== action.payload)
+      console.log('removed from favs');
+      
+      return {
+        ...state,
+        favorites: state.favorites.filter(el => el !== action.payload)
+      }
     },
     addHistory: (state, action) => {
       // state.history.push(action.payload)

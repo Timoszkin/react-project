@@ -4,7 +4,7 @@ import "./Developer.css";
 type DeveloperProp = {
   fullname: string;
   link: string;
-};
+}
 
 function Developer({ fullname, link }: DeveloperProp) {
   return (
