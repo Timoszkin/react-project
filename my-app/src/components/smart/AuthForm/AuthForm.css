@@ -20,13 +20,16 @@
   appearance: none;
   -webkit-appearance: none;
   padding: 5px;
-  border: none;
   background-color: rgba(39, 139, 196, 1);
   color: #fff;
   font-weight: 600;
   border-radius: 5px;
   width: 30%;
   margin: 10px;
+}
+
+.authForm_submitButton:hover {
+  background-color: rgb(30, 110, 156);
 }
 
 .authForm_input {
@@ -45,7 +48,7 @@
 
 
 .authForm_toggleButton{
-  margin-bottom: 5px;
+  margin: 7px;
 }
 .authForm_warningField {
   width: fit-content;
