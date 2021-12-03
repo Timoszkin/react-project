@@ -32,6 +32,7 @@ export const userSlice = createSlice({
     },
     addFavorites: (state, action) => {
       // state.favorites.push(action.payload) 
+      console.log('action addFavorites: ', action)
     },
     removeFavorites: (state, action) => {
       state.favorites.filter(el => el !== action.payload)
