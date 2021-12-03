@@ -1,7 +1,7 @@
 export type User = {
   email: string,
   password: string,
-  favorites: string[] | [],
-  history: string[] | [],
+  favorites: string[],
+  history: string[],
   id: number,
 }

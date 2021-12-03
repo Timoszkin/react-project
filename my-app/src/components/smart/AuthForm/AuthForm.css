@@ -62,3 +62,18 @@
   border-bottom: 2px solid rgb(248, 57, 57);
   width: 100%;
 }
+
+.authForm_redirect {
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+.authForm_redirect > a {
+  text-decoration: none;
+  font-weight: bold;
+  color: rgba(39, 139, 196, 1);
+}
+
+.authForm_redirect > a:hover {
+  color: rgb(255, 255, 255);
+}

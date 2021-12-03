@@ -1,6 +1,5 @@
-
 import { useState, useContext } from "react";
-import { ThemeContext } from "../Context/ThemeProvider";
+// import { ThemeContext } from "../Context/ThemeProvider";
 import { Link } from "react-router-dom";
 import "./AuthForm.css";
 
@@ -12,7 +11,7 @@ export default function AuthForm({ isSigninPage }: AuthFormProp) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  // const { theme, toggleTheme } = useContext(ThemeContext);
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -70,9 +69,9 @@ export default function AuthForm({ isSigninPage }: AuthFormProp) {
           </button>
         </div> */}
         <div>
-          <button className="authForm_toggleButton" onClick={toggleTheme}>
+          {/* <button className="authForm_toggleButton" onClick={toggleTheme}>
             Toggle background color
-          </button>
+          </button> */}
         </div>
       </form>
     </div>

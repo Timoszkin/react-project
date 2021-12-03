@@ -1,18 +1,42 @@
 import './MovieInfo.css'
 import { TMDB_IMAGE_PATH } from '../../../api/movieImageLink'
+import Button from "../Button/Button"
+import { addFavorites, removeFavorites } from '../../../features/user/userSlice'
+import { useSelector, shallowEqual } from 'react-redux'
+import { RootState } from '../../../app/store'
+import { useDispatch } from "react-redux";
+import { useNavigate } from 'react-router'
+import { MovieInfoProps } from '../../../types/MovieInfoProps'
+import { addFavLocalStore, removeFavLocalStore } from '../../../app/localStoreFunctions'
 
-type MovieIndoProps = {
-  name: string;
-  posterPath: string,
-  plot: string,
-  rating: number,
-  director: string,
-  year: number,
-}
+export const MovieInfo = (props: MovieInfoProps) => {
+  const dispatch = useDispatch();
+  const navigator = useNavigate();
 
-export const MovieInfo = (props: MovieIndoProps) => {
   const { name, posterPath, plot, rating, director, year, } = props;
-  // wrap this in a Router component in order for it to transfer you to the movie
+  const favoritesList = useSelector((state: RootState) => state.userSlice.favorites, shallowEqual);
+  const currentUserID = useSelector((state: RootState) => state.userSlice.id, shallowEqual);
+
+  let buttonText = favoritesList.find(el => el === name)
+    ? "Remove from Favorites"
+    : "Add to Favorites"
+
+  const toggleFavorites = () => {
+    if (currentUserID > 0) {
+      navigator('/signin')
+      return;
+    } else {
+      if (favoritesList.find(el => el === name)) {
+        dispatch(removeFavorites(name));
+        removeFavLocalStore(currentUserID, name)
+        buttonText = "Add to Favorites";
+      } else {
+        dispatch(addFavorites(name));
+        addFavLocalStore(currentUserID, name)
+        buttonText = "Remove from Favorites";
+      }
+    }
+  }
   return (
     <div
       className="movie__background"
@@ -32,14 +56,17 @@ export const MovieInfo = (props: MovieIndoProps) => {
           className="movie__information"
         >
           <h1>{name}</h1><span>({year})</span>
-          <h3
-            className="movie__information--header"
+
+          <div
+            className="movie__information--plot"
           >
-            PLOT
-          </h3>
-          <p>
+            <h3
+              className="movie__information--header"
+            >
+              PLOT
+            </h3>
             {plot}
-          </p>
+          </div>
           <div>
             <div
               className="movie__information--details"
@@ -67,6 +94,10 @@ export const MovieInfo = (props: MovieIndoProps) => {
               <p>{director}</p>
             </div>
           </div>
+          <Button
+            text={buttonText}
+            handleClick={toggleFavorites}
+          />
         </div>
       </div>
     </div>

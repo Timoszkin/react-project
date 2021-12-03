@@ -10,28 +10,30 @@
   padding: 30px;
   display: flex;
   height: 600px;
+  box-sizing: border-box;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.544);
   color: white;
 }
 
 .movie__poster--big {
-  height: 600px;
+  height: 100%;
   width: 300px;
   object-fit: cover;
   border-radius: 20px;
 }
 
 .movie__information {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 15px;
+  padding:15px;
 }
 
 .movie__information--rating {
   box-sizing: border-box;
-  width: fit-content  ;
+  width: fit-content ;
   padding: 5px;
   background-color: black;
   border-radius: 50%;
@@ -40,4 +42,15 @@
 
 .movie__information--header {
   text-align: start;
+}
+
+.movie__information--plot {
+  margin: 20px, 20px;
+  text-align: left;
+}
+
+@media only screen and (max-width : 700px) {
+  .movie__information--plot {
+    display: none;
+  }
 }
