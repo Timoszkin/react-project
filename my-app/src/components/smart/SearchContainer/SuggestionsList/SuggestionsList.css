@@ -1,8 +1,6 @@
 .search-list {
   position: relative;
-
-  max-width: 620px;
-  margin: 0 auto;
+  z-index: 200;
 }
 
 .search-list__list {
@@ -13,7 +11,7 @@
   box-sizing: border-box;
   width: 100%;
   margin: 0;
-  padding: 0 10px;
+  padding: 0;
 
   list-style: none;
 }

@@ -1,4 +1,4 @@
-interface Movie {
+type Movie = {
   id: number,
   title: string,
   originalTitle: string,
@@ -9,7 +9,7 @@ interface Movie {
   backdropPath: string
 }
 
-type Response = {
+interface ApiResponse {
   id: number,
   title: string,
   original_title: string,
@@ -20,4 +20,4 @@ type Response = {
   backdrop_path: string,
 }
 
-export type { Movie, Response };
+export type { Movie, ApiResponse };

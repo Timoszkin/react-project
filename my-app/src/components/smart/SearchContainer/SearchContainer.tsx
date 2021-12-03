@@ -1,15 +1,15 @@
 import { useRef, FormEvent, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { Movie } from '../../../api/types';
 import { debounce } from '../../../app/utils';
-import SearchForm from "../../dumb/SearchForm/SearchForm";
-import SearchSuggestionsList from "../../dumb/SearchSuggestionsList/SearchSuggestionsList";
+import SearchForm from './SearchForm/SearchForm';
+import SuggestionsList from './SuggestionsList/SuggestionsList';
+import './SearchContainer.css';
+
 const DEBOUNCE_DELAY = 800;
 
 function SearchContainer() {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
   const handleOuterClick = (event: MouseEvent) => {
     if (!searchRef?.current?.contains(event.target as Node)) {
       setShowSuggestions(false);
@@ -24,29 +24,27 @@ function SearchContainer() {
   const debouncedSetSearchValue = useCallback(
     debounce(setSearchValue, DEBOUNCE_DELAY)
   , []);
+
+  const navigate = useNavigate();
   const handleFormSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      console.log('submit'); // for tests only
-      // save search history (local storage)
-      // call API for data
-      // format data
-      // show search results (?)
-      if(searchValue.length !== 0)
-        navigate(`/search?query=${searchValue}`)
-      else
-        navigate(`/search`)  
-  }, [searchValue]);
+      if (searchValue.length !== 0) {
+        navigate(`/search?query=${searchValue.trim().replaceAll(' ', '+')}`);
+      }
+    }
+  , [searchValue]);
 
   return (
-    <div ref={searchRef}>
-      <SearchForm 
+    <div className="search-container" ref={searchRef}>
+      <SearchForm
         submitHandler={handleFormSubmit}
-        showSuggestionsCallback={setShowSuggestions} 
+        showSuggestionsCallback={setShowSuggestions}
         setSearchValueCallback={debouncedSetSearchValue}
       />
-      {searchValue && showSuggestions &&
-        <SearchSuggestionsList searchValue={searchValue}/>}
+      {searchValue && showSuggestions && (
+        <SuggestionsList searchValue={searchValue} />
+      )}
     </div>
   );
 }

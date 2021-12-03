@@ -1,48 +1,44 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import apiConfig from './apiConfig';
-import { Movie, Response } from './types';
-import mapResponseProps from './utils';
+import { Movie, ApiResponse } from './types';
+import mapApiResponseProps from './utils';
 
 export const movieSlice = createApi({
   reducerPath: 'movieAPI',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.themoviedb.org/3' }),
   endpoints: (builder) => ({
-    getMovieByID: builder.query<Movie, number | string>({
+    getMovie: builder.query<Movie, number | string>({
       query: (id: number | string) => ({
         url: `/movie/${id}`,
         params: {
-          api_key: apiConfig.key
-        }
+          api_key: apiConfig.key,
+        },
       }),
-      transformResponse: (response: Response) => 
-        mapResponseProps(response)
+      transformResponse: (response: ApiResponse) => mapApiResponseProps(response),
     }),
     getPopularMovies: builder.query<Movie[], void>({
       query: () => ({
         url: `/movie/popular`,
         params: {
-          api_key: apiConfig.key
-        }
+          api_key: apiConfig.key,
+        },
       }),
-      transformResponse: (response: { results: Response[] }) => 
-        response.results.map((movie) => mapResponseProps(movie))
+      transformResponse: (response: { results: ApiResponse[] }) =>
+        response.results.map((movie) => mapApiResponseProps(movie)),
     }),
-    getMoviesByTitle: builder.query<Movie[], string>({
+    getMovies: builder.query<Movie[], string>({
       query: (title: string) => ({
         url: `/search/movie`,
         params: {
           api_key: apiConfig.key,
-          query: title
-        }
+          query: title,
+        },
       }),
-      transformResponse: (response: { results: Response[] }) => 
-        response.results.map((movie) => mapResponseProps(movie))
-    })
-  })
+      transformResponse: (response: { results: ApiResponse[] }) =>
+        response.results.map((movie) => mapApiResponseProps(movie)),
+    }),
+  }),
 });
 
-export const { 
-  useGetMovieByIDQuery, 
-  useGetPopularMoviesQuery, 
-  useGetMoviesByTitleQuery 
-} = movieSlice;
+export const { useGetMovieQuery, useGetPopularMoviesQuery, useGetMoviesQuery } =
+  movieSlice;
