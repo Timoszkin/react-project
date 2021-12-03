@@ -1,12 +1,11 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { setUser } from "../../../features/user/userSlice";
 import "./AuthForm.css";
 import { User } from "../../../types/User";
-// import { ThemeContext } from "./context/ThemeProvider";
-
+import { ThemeContext } from "../../../context/ThemeProvider";
 
 type AuthFormProp = {
   isLoginPage: boolean;
@@ -14,7 +13,7 @@ type AuthFormProp = {
 
 export default function AuthForm({ isLoginPage }: AuthFormProp) {
   const dispatch = useDispatch();
-  // const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [warningField, setWarning] = useState({
@@ -47,7 +46,6 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
       setWarning({ isDisplayed: false, warningMessage: '', type: '' })
     }
   };
-
 
   const handleLogin = () => {
     const userListString: string = localStorage.getItem('user') || '[]';
@@ -126,6 +124,10 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
     </button>
   );
 
+  useEffect(()=>{
+    toggleTheme()
+  },[])
+
   return (
     <div className="authForm_outerContainer">
       <form
@@ -165,9 +167,6 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
             Warning: {warningField.warningMessage}
           </span>
         }
-        {/* <button className="authForm_toggleButton" onClick={toggleTheme}>
-            Toggle background color
-        </button> */}
         <div
          className="authForm_redirect"
         >
@@ -175,6 +174,11 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
           <Link to={isLoginPage ? "/signup" : "/signin"}>
             {isLoginPage ? "Sign Up" : "Log in"}
           </Link>
+        </div>
+        <div>
+          <button className="authForm_toggleButton" onClick={toggleTheme}>
+            Change color
+          </button>
         </div>
       </form>
     </div>
