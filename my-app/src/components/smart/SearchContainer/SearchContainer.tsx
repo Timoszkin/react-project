@@ -46,6 +46,7 @@ function SearchContainer() {
         // add to history
         dispatch(addHistory(searchValue));
         addHistoryLocalStore(currentUserID, searchValue);
+        console.log(localStorage.getItem('user'))
       }
     }
   , [searchValue]);

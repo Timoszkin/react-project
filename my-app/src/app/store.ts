@@ -9,9 +9,9 @@ export const store = configureStore({
     // counter: counterReducer,
     [movieSlice.reducerPath]: movieSlice.reducer,
   },
-  // middleware: (getDefaultMiddleware) => 
-  //   // getDefaultMiddleware().concat(customMiddleware, movieSlice.middleware )
-  middleware: [addFavoritesToLocalStoreMiddleware]
+  middleware: (getDefaultMiddleware) => 
+    getDefaultMiddleware().concat(addFavoritesToLocalStoreMiddleware, movieSlice.middleware )
+  // middleware: [addFavoritesToLocalStoreMiddleware, movieSlice.middleware]
 
 });
 
