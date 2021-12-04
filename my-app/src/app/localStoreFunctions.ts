@@ -37,4 +37,21 @@ const removeFavLocalStore = (currentUserID: number, movieName: string) => {
   localStorage.setItem('user', newUserListStringified)
 }
 
-export { removeFavLocalStore, addFavLocalStore }
+const addHistoryLocalStore = (currentUserID: number, searchValue: string) => {
+  const userList: User[] = getUserList()
+  const newUserList = userList.map(el => {
+    if (el.id === currentUserID) {
+      if (!el.history) {
+        el.history = [searchValue]
+      } else {
+        el.history = [...el.history, searchValue]
+      }
+    }
+    return el;
+  })
+
+  const newUserListStringified = JSON.stringify(newUserList)
+  localStorage.setItem('user', newUserListStringified)
+}
+
+export { removeFavLocalStore, addFavLocalStore, addHistoryLocalStore }

@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEventHandler } from 'react';
+
 import { ReactComponent as Icon } from './icon.svg';
 import './SearchForm.css';
 
@@ -13,6 +14,7 @@ function SearchForm({
   setSearchValueCallback,
   showSuggestionsCallback,
 }: SearchFormProps) {
+
   return (
     <form className="search-form" onSubmit={submitHandler}>
       <input
