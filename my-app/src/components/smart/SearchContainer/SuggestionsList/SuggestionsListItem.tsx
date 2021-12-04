@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Movie } from '../../../../api/types';
 
-function SuggestionsListItem({ id, title, releaseDate }: Movie) {
+function SuggestionsListItem({ id, title, releaseDate: year }: Movie) {
   const path = `/movie/${id}`;
-  const year = releaseDate.slice(0, 4);
 
   return (
     <li className="search-list__item">

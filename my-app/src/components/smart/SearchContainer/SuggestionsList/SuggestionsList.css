@@ -5,45 +5,52 @@
 
 .search-list__list {
   position: absolute;
-
+  top: -10px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: 100%;
   margin: 0;
   padding: 0;
-
   list-style: none;
 }
 
 .search-list__item {
   background: #ffffff;
-  border: 1px solid #606060;
+  border: 1px solid rgb(206, 206, 206);
   border-top: none;
 }
 
+.search-list__item:first-child {
+  padding-top: 10px;
+}
+
 .search-list__item:last-child {
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .search-list__item_loading,
 .search-list__item_error,
 .search-list__item_no-results {
-  padding: 4px 5px;
-
+  padding: 10px;
   color: #000000;
-  font-size: 14px;
+  font-size: 13.333px;
+}
+
+.search-list__item_loading:first-child,
+.search-list__item_error:first-child,
+.search-list__item_no-results:first-child {
+  padding-top: 20px;
 }
 
 .search-list__item a {
   display: block;
   box-sizing: border-box;
   width: 100%;
-  padding: 4px 5px;
-
+  padding: 10px;
   color: #000000;
-  font-size: 14px;
+  font-size: 13.333px;
   text-align: left;
   text-decoration: none;
 }

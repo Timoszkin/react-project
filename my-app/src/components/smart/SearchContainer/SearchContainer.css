@@ -1,5 +1,9 @@
 .search-container {
-  width: 100%;
-  max-width: 600px;
+  padding: 30px 20px;
+  box-sizing: border-box;
+}
+
+.search-container__inner {
+  max-width: 80%;
   margin: 0 auto;
 }

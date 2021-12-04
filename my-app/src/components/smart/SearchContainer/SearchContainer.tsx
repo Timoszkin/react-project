@@ -36,15 +36,17 @@ function SearchContainer() {
   , [searchValue]);
 
   return (
-    <div className="search-container" ref={searchRef}>
-      <SearchForm
-        submitHandler={handleFormSubmit}
-        showSuggestionsCallback={setShowSuggestions}
-        setSearchValueCallback={debouncedSetSearchValue}
-      />
-      {searchValue && showSuggestions && (
-        <SuggestionsList searchValue={searchValue} />
-      )}
+    <div className="search-container">
+      <div className="search-container__inner" ref={searchRef}>
+        <SearchForm
+          submitHandler={handleFormSubmit}
+          showSuggestionsCallback={setShowSuggestions}
+          setSearchValueCallback={debouncedSetSearchValue}
+        />
+        {searchValue && showSuggestions && (
+          <SuggestionsList searchValue={searchValue} />
+        )}
+      </div>
     </div>
   );
 }
