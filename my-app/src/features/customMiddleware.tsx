@@ -1,32 +1,29 @@
 import React from "react";
-import userReducer, {addFavorites, removeFavorites} from './user/userSlice';
-import { useDispatch } from "react-redux";
-import { User } from "../types/User";
 import { Middleware } from "redux";
-import { useNavigate } from "react-router";
-
+import { addFavLocalStore, removeFavLocalStore } from "../app/localStoreFunctions";
 const userActionList = ['user/addFavorites', 'user/removeFavorites']
-const сustomMiddleware: Middleware = (store) => (next) => (action) => {
 
-  console.log('action: ', action.payload)
+const addFavoritesToLocalStoreMiddleware: Middleware = (store) => (next) => (action) => {
   const state = store.getState();
-
-  if(userActionList.includes(action.type) && state.userSlice.email) {
+  if(userActionList.includes(action.type)) {
     switch(action.type) {
       case userActionList[0]: {
-        addFavorites(action.payload.favorites);
+        const getJsonUserFromLocalStore = JSON.parse(localStorage.getItem('user') || '[]')
+        const getMailList = getJsonUserFromLocalStore.map((user: any) => {
+          return Object.values(user)[0];
+        })
+        if(getMailList.includes(state.userSlice.email)) {
+          addFavLocalStore(state.userSlice.id, action.payload);
+        }
         break;
       }
       case userActionList[1]: {
-        removeFavorites(action.payload.favorites);
-        break;
+        removeFavLocalStore(state.userSlice.id, action.payload);
+        break;  
       }
     }
   }
-  else {
-    // const navigate = useNavigate();
-    // navigate('/signup');ы
-  }
+  next(action);
 }
 
-export default сustomMiddleware;
+export default addFavoritesToLocalStoreMiddleware;

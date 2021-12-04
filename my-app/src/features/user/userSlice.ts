@@ -28,7 +28,7 @@ export const userSlice = createSlice({
       }
     },
     addFavorites: (state, action: { payload: string }) => {
-      console.log('added fav');
+      console.log('added fav: ', action);
       
       return {
         ...state,
@@ -36,8 +36,7 @@ export const userSlice = createSlice({
       }
     },
     removeFavorites: (state, action) => {
-      console.log('removed from favs');
-      
+      console.log('func removed action.payload: ', action.payload)
       return {
         ...state,
         favorites: state.favorites.filter(el => el !== action.payload)
