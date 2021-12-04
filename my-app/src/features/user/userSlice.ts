@@ -44,6 +44,10 @@ export const userSlice = createSlice({
     },
     addHistory: (state, action) => {
       // state.history.push(action.payload)
+      return {
+        ...state,
+        history: [...state.history, action.payload]
+      }
     },
   },
 });
