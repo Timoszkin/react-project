@@ -6,14 +6,17 @@ import { useSelector, shallowEqual } from 'react-redux'
 import { RootState } from '../../../app/store'
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router'
-import { MovieInfoProps } from '../../../types/MovieInfoProps'
+//import { MovieInfoProps } from '../../../types/MovieInfoProps'
 import { addFavLocalStore, removeFavLocalStore } from '../../../app/localStoreFunctions'
+import { Movie } from '../../../api/types'
 
-export const MovieInfo = (props: MovieInfoProps) => {
+//export const MovieInfo = (props: MovieInfoProps) => {
+export const MovieInfo = (props: Movie) => {
   const dispatch = useDispatch();
   const navigator = useNavigate();
 
-  const { name, posterPath, plot, rating, director, year, } = props;
+  //const { name, posterPath, plot, rating, director, year, } = props;
+  const { title: name, posterPath, overview: plot, voteAverage: rating, releaseDate: year, } = props;
   const favoritesList = useSelector((state: RootState) => state.userSlice.favorites, shallowEqual);
   const currentUserID = useSelector((state: RootState) => state.userSlice.id, shallowEqual);
 
@@ -83,7 +86,8 @@ export const MovieInfo = (props: MovieInfoProps) => {
               </p>
             </div>
 
-            <div
+            {/* API DOESN'T SUPPORT DIRECTOR INFO :C */}
+            {/* <div
               className="movie__information--details"
             >
               <h3
@@ -92,7 +96,7 @@ export const MovieInfo = (props: MovieInfoProps) => {
                 DIRECTOR
               </h3>
               <p>{director}</p>
-            </div>
+            </div> */}
           </div>
           <Button
             text={buttonText}

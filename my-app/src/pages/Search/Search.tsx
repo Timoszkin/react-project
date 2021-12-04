@@ -3,6 +3,7 @@ import { useGetMoviesQuery } from '../../api/movieSlice';
 import { MovieList } from '../../components/dumb/MovieList';
 import SearchContainer from '../../components/smart/SearchContainer/SearchContainer';
 import './Search.css';
+import Spinner from '../../components/dumb/Spinner/Spinner';
 
 function Search() {
   // page url example: /search?query=harry+potter
@@ -15,25 +16,25 @@ function Search() {
     isError,
   } = useGetMoviesQuery(searchQuery, { skip: !searchQuery });
 
-  let content;
-  if (isFetching) {
-    content = <p className="search-page__info">Loading...</p>;
-  } else if (isSuccess) {
-    content =
+  let searchResults;
+  if (isSuccess) {
+    searchResults =
       movies.length > 0 ? (
         <MovieList results={movies} />
       ) : (
         <p className="search-page__info">Nothing found</p>
       );
-  } else if (isError) {
-    content = <p className="search-page__info">Oops, something went wrong</p>;
   }
 
   return (
     <div className="search-page">
-      <h1>Search Page</h1>
       <SearchContainer />
-      {content}
+      {searchQuery && <h2>Search results</h2>}
+      {isFetching && <Spinner />}
+      {isSuccess && searchResults}
+      {isError && (
+        <p className="search-page__info">Oops, something went wrong</p>
+      )}
     </div>
   );
 }

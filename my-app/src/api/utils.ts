@@ -13,7 +13,7 @@ const mapApiResponseProps = ({
   id: id,
   title: title,
   originalTitle: original_title,
-  releaseDate: release_date,
+  releaseDate: release_date.slice(0, 4),
   overview: overview,
   voteAverage: vote_average,
   posterPath: poster_path,

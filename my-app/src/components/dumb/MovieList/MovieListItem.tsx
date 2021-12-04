@@ -2,12 +2,11 @@ import { Link } from 'react-router-dom';
 import { Movie } from '../../../api/types';
 import { TMDB_IMAGE_PATH } from '../../../api/movieImageLink';
 
-function MovieListItem({ id, posterPath, title, releaseDate }: Movie) {
+function MovieListItem({ id, posterPath, title, releaseDate: year }: Movie) {
   const path = `/movie/${id}`;
 
   let content;
   if (!posterPath) {
-    const year = releaseDate.slice(0, 4);
     content = (
       <div className="movie__poster movie__poster_no-poster">
         {`${title} (${year})`}
