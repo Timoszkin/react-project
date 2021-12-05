@@ -1,7 +1,7 @@
 import "./Footer.css";
 import DeveloperList from "../DeveloperList/DeveloperList";
 
-function Footer() {
+function Footer(props: any) {
   const developers = [
     {
       fullname: "Fesenko Tymofii",
@@ -20,8 +20,14 @@ function Footer() {
       link: "https://t.me/tatiananfrank",
     },
   ];
+
+  const style = {
+    backgroundColor: props.backgroundColor,
+    color: props.color
+  }
+
   return (
-    <div className="footer">
+    <div className="footer" style={style}>
       <div className="footer__content">
         <DeveloperList developers={developers} />
         <div>There will be Logo</div>
