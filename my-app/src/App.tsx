@@ -7,15 +7,16 @@ import './App.css';
 import "./App.css";
 import Footer from "./components/dumb/Footer/Footer";
 import Header from "./components/dumb/Header/Header";
-import { MovieInfo } from './components/dumb/MovieInfo';
 import { SearchHistoryList } from './components/dumb/SearchHistoryList';
 import AuthForm from './components/smart/AuthForm/AuthForm';
 import ErrorBoundary from './components/smart/ErrorBoundary/ErrorBoundary';
+import Home from './pages/Home/Home';
 import Search from './pages/Search/Search';
+import Movie from './pages/Movie/Movie';
 
 function App() {
   // two variables to test MovieList and MovieInfo components
-  let list = {
+  /* let list = {
     results:
       [
         {
@@ -56,11 +57,10 @@ function App() {
     rating: 5.6,
     director: 'Groger likas',
     year: 2012,
-  }
+  } */
 
   return (
     <div className="App">
-
       <ErrorBoundary>
         <Header />
         <Routes>
@@ -68,8 +68,9 @@ function App() {
           <Route path='/signup' element={<AuthForm isLoginPage={false}/>}/>
           <Route path='/history' element={<SearchHistoryList results={[{link: 'asdf', query: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg'} ]}/>} />
           <Route path='/search' element={<Search/>}/>
+          <Route path='/movie/:id' element={<Movie/>}/>
+          <Route path='/' element={<Home/>}/>
         </Routes>
-        <MovieInfo {...someMovie}/>
         <Footer />
       </ErrorBoundary>
     </div>
