@@ -7,6 +7,7 @@ export const movieSlice = createApi({
   reducerPath: 'movieAPI',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.themoviedb.org/3' }),
   endpoints: (builder) => ({
+
     getMovie: builder.query<Movie, number | string>({
       query: (id: number | string) => ({
         url: `/movie/${id}`,
@@ -37,8 +38,19 @@ export const movieSlice = createApi({
       transformResponse: (response: { results: ApiResponse[] }) =>
         response.results.map((movie) => mapApiResponseProps(movie)),
     }),
+    getFavs: builder.query<Movie[], number | string>({
+      query: (account_id: number | string) => ({
+        url: `/account/${account_id}/favorite/movies`,
+        params: {
+          api_key: apiConfig.key,
+          session_id: 'v3413dfEFEcd'  // !!!!!
+        },
+      }),
+      transformResponse: (response: { results: ApiResponse[] }) =>
+        response.results.map((movie) => mapApiResponseProps(movie)),
+    }),
   }),
 });
 
-export const { useGetMovieQuery, useGetPopularMoviesQuery, useGetMoviesQuery } =
+export const { useGetMovieQuery, useGetPopularMoviesQuery, useGetMoviesQuery, useGetFavsQuery } =
   movieSlice;

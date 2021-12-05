@@ -13,6 +13,7 @@ import ErrorBoundary from './components/smart/ErrorBoundary/ErrorBoundary';
 import Home from './pages/Home/Home';
 import Search from './pages/Search/Search';
 import Movie from './pages/Movie/Movie';
+import Favorites from './pages/Favorites/Favorites';
 
 function App() {
   // two variables to test MovieList and MovieInfo components
@@ -68,9 +69,11 @@ function App() {
           <Route path='/signup' element={<AuthForm isLoginPage={false}/>}/>
           <Route path='/history' element={<SearchHistoryList results={[{link: 'asdf', query: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg'} ]}/>} />
           <Route path='/search' element={<Search/>}/>
+          <Route path='/favourites' element={<Favorites />} />
           <Route path='/movie/:id' element={<Movie/>}/>
           <Route path='/' element={<Home/>}/>
         </Routes>
+        {/* <Favorites /> */}
         <Footer />
       </ErrorBoundary>
     </div>
