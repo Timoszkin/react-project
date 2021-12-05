@@ -1,6 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import userReducer from '../features/user/userSlice';
 import { movieSlice } from '../api/movieSlice';
+import addFavoritesToLocalStoreMiddleware from '../features/customMiddleware'
 
 export const store = configureStore({
   reducer: {
@@ -9,7 +10,9 @@ export const store = configureStore({
     [movieSlice.reducerPath]: movieSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => 
-    getDefaultMiddleware().concat(movieSlice.middleware)
+    getDefaultMiddleware().concat(addFavoritesToLocalStoreMiddleware, movieSlice.middleware )
+  // middleware: [addFavoritesToLocalStoreMiddleware, movieSlice.middleware]
+
 });
 
 export type AppDispatch = typeof store.dispatch;

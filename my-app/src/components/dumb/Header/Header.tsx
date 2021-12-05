@@ -9,7 +9,7 @@ import { useSelector, shallowEqual } from 'react-redux'
 
 export default function Header() {
   const email = useSelector((state: RootState) => state.userSlice.email, shallowEqual)
-
+  
   const dispatch = useDispatch();
   const signOut = ():void => {
     dispatch(resetUser())
@@ -17,6 +17,7 @@ export default function Header() {
   let headerActions;
   if (email.length > 1) {
     // если авторизован
+    console.log('email: ', email)
     headerActions = (
       <div className="header__actions_auth">
         <NavLink className="header__link" to="/favourites">
@@ -33,6 +34,8 @@ export default function Header() {
     );
   } else {
     // если не авторизован
+    console.log('error: ', email)
+
     headerActions = (
       <div className="header__actions">
         <Link to="/signup">
