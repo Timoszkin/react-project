@@ -124,14 +124,14 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
     </button>
   );
 
-  useEffect(()=>{
-    toggleTheme()
-  },[])
+  // useEffect(()=>{
+  //   toggleTheme()
+  // },[])
 
   return (
     <div className="authForm_outerContainer">
       <form
-        className="authForm"
+        className={theme === 'light'?"authForm":'authForm_dark'}
         onSubmit={onSubmit}
       >
         <h3>{submitButtonText}</h3>
@@ -175,11 +175,11 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
             {isLoginPage ? "Sign Up" : "Log in"}
           </Link>
         </div>
-        <div>
+        {/* <div>
           <button className="authForm_toggleButton" onClick={toggleTheme}>
             Change color
           </button>
-        </div>
+        </div> */}
       </form>
     </div>
   );
