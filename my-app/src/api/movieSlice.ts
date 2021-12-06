@@ -38,19 +38,8 @@ export const movieSlice = createApi({
       transformResponse: (response: { results: ApiResponse[] }) =>
         response.results.map((movie) => mapApiResponseProps(movie)),
     }),
-    getFavs: builder.query<Movie[], number | string>({
-      query: (account_id: number | string) => ({
-        url: `/account/${account_id}/favorite/movies`,
-        params: {
-          api_key: apiConfig.key,
-          session_id: 'v3413dfEFEcd'  // !!!!!
-        },
-      }),
-      transformResponse: (response: { results: ApiResponse[] }) =>
-        response.results.map((movie) => mapApiResponseProps(movie)),
-    }),
   }),
 });
 
-export const { useGetMovieQuery, useGetPopularMoviesQuery, useGetMoviesQuery, useGetFavsQuery } =
+export const { useGetMovieQuery, useGetPopularMoviesQuery, useGetMoviesQuery } =
   movieSlice;

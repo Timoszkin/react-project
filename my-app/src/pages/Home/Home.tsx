@@ -12,7 +12,7 @@ function Home() {
     isSuccess,
     isError,
   } = useGetPopularMoviesQuery();
-
+  // console.log('movies type: ', movies)
   return (
     <div className="homepage">
       {isFetching && <Spinner />}

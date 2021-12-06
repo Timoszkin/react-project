@@ -2,6 +2,7 @@
 // DELETE LATER
 
 export type MovieInfoProps = {
+  id: number,
   name: string;
   posterPath: string,
   plot: string,
