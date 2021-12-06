@@ -1,7 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import {Button} from "../components/dumb/Button/Button"
 
-
 export default {
   title: 'Button',
   component: Button,
@@ -18,7 +17,7 @@ export default {
   },
 } as ComponentMeta<typeof Button>
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof Button> = (args:any ) => <Button {...args} />;
 
 export const Main = Template.bind({});
 Main.args = {
