@@ -1,27 +1,25 @@
+import { Link } from 'react-router-dom';
+import './SearchHistoryList.css';
 
 type HistoryResults = {
-  link: string;
-  query: string;
-}
+  path: string;
+  text: string;
+};
 
 type SearchHistoryListProps = {
-  results: HistoryResults[]
-}
+  results: HistoryResults[];
+};
 
 export const SearchHistoryList = (props: SearchHistoryListProps) => {
   const { results } = props;
-  // wrap this in a Router component in order for it to transfer you to the result search or use <a> tag as a link
+
   return (
-    <ul>
-      {results.map(el => (
-        <li
-          key={el.link}
-        >
-          <a href={el.link}>
-            {el.query}
-          </a>
+    <ul className="search-history-list">
+      {results.map(({ path, text }) => (
+        <li key={path}>
+          <Link to={path}>{text}</Link>
         </li>
       ))}
     </ul>
-  )
-}
+  );
+};
