@@ -11,7 +11,7 @@ const PrivateRoute = ({ redirectPath, component }: Props): JSX.Element => {
 
     const userEmail = useSelector((state: RootState)=>state.userSlice.email)
     const isLoggedIn = Boolean(userEmail)
-    console.log(userEmail)
+    
   if (isLoggedIn) {
     return component;
   }
