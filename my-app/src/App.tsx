@@ -7,59 +7,15 @@ import './App.css';
 import "./App.css";
 import Footer from "./components/dumb/Footer/Footer";
 import Header from "./components/dumb/Header/Header";
-import { SearchHistoryList } from './components/dumb/SearchHistoryList';
 import AuthForm from './components/smart/AuthForm/AuthForm';
 import ErrorBoundary from './components/smart/ErrorBoundary/ErrorBoundary';
 import Home from './pages/Home/Home';
 import Search from './pages/Search/Search';
 import Movie from './pages/Movie/Movie';
 import Favorites from './pages/Favorites/Favorites';
+import History from './pages/History/History';
 
 function App() {
-  // two variables to test MovieList and MovieInfo components
-  /* let list = {
-    results:
-      [
-        {
-          link: 'asdf',
-          poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
-        },
-        {
-          link: 'asdf',
-          poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
-        },
-        {
-          link: 'asdf',
-          poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
-        },
-        {
-          link: 'asdf',
-          poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
-        },
-        {
-          link: 'asdf',
-          poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
-        },
-        {
-          link: 'asdf',
-          poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
-        },
-        {
-          link: 'asdf',
-          poster_path: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
-        },
-      ],
-  }
-
-  let someMovie = {
-    name: 'Some Lame Movie Name',
-    posterPath: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg',
-    plot: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, voluptatum fugit temporibus et corrupti consectetur eius non excepturi, qui suscipit dolorem delectus voluptatem sint minus omnis commodi repellendus ducimus nulla',
-    rating: 5.6,
-    director: 'Groger likas',
-    year: 2012,
-  } */
-
   return (
     <div className="App">
       <ErrorBoundary>
@@ -67,7 +23,7 @@ function App() {
         <Routes>
           <Route path='/signin' element={<AuthForm isLoginPage={true}/>}/>
           <Route path='/signup' element={<AuthForm isLoginPage={false}/>}/>
-          <Route path='/history' element={<SearchHistoryList results={[{link: 'asdf', query: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg'} ]}/>} />
+          <Route path='/history' element={<History/>}/>
           <Route path='/search' element={<Search/>}/>
           <Route path='/favourites' element={<Favorites />} />
           <Route path='/movie/:id' element={<Movie/>}/>
