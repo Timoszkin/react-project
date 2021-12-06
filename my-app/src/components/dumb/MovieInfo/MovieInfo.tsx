@@ -53,7 +53,7 @@ export const MovieInfo = (props: Movie) => {
     >
       <div className="movie__foreground">
         <img
-          src={"https://image.tmdb.org/t/p/original/".concat(posterPath)}
+          src={TMDB_IMAGE_PATH.concat(posterPath)}
           alt="movie poster"
           className="movie__poster--big"
         />

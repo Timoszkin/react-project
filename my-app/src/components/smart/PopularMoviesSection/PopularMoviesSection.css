@@ -1,0 +1,21 @@
+.popular-movies {
+  padding: 20px 0 30px;
+}
+
+.popular-movies__title {
+  margin: 0 0 20px;
+}
+
+.popular-movies__btn {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid rgb(206, 206, 206);
+  border-radius: 10px;
+  background: #ffffff;
+  transition: 0.3s border-color;
+  cursor: pointer;
+}
+
+.popular-movies__btn:hover {
+  border-color: #aaaaaa;
+}
