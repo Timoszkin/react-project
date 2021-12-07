@@ -11,6 +11,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router'
 import { addFavLocalStore, removeFavLocalStore } from '../../../app/localStoreFunctions'
 import { Movie } from '../../../api/types'
+import heartIconEmpty from "../../../images/heartEmpty.png"
+import heartIconFilled from "../../../images/heartFilled.png"
 
 export const MovieInfo = (props: Movie) => {
   const dispatch = useDispatch();
@@ -31,6 +33,10 @@ export const MovieInfo = (props: Movie) => {
   let buttonText = favoritesList.find((el) => el === name)
     ? "Remove from Favorites"
     : "Add to Favorites";
+  
+  const heartIcon = favoritesList.find((el) => el === name)
+    ? heartIconFilled
+    : heartIconEmpty
 
   const toggleFavorites = () => {
     if (currentUserID === 0) {
@@ -84,8 +90,12 @@ export const MovieInfo = (props: Movie) => {
               <h3 className="movie__information--header">DIRECTOR</h3>
               <p>{director}</p>
             </div> */}
-          </div>
+            
+          </div >
+          <div className="favouritesWrapper">
+          <img className="heart" src={heartIcon} alt="heart" />
           <Button text={buttonText} handleClick={toggleFavorites} />
+          </div>
         </div>
       </div>
     </div>

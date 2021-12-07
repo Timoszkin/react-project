@@ -49,6 +49,19 @@
   text-align: left;
 }
 
+.heart{
+  display: flex;
+  width: 40px;
+  margin: 10px;
+}
+
+.favouritesWrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+
 @media only screen and (max-width : 700px) {
   .movie__information--plot {
     display: none;
