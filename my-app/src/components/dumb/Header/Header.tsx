@@ -2,35 +2,41 @@ import { useContext } from "react";
 import { NavLink, Link } from "react-router-dom";
 import "./Header.css";
 import Button from "../Button/Button";
-import { useDispatch } from "react-redux";
-import { resetUser } from "../../../features/user/userSlice";
 import { RootState } from "../../../app/store";
-import { useSelector, shallowEqual } from "react-redux";
+import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import logo from "../../../images/logo.png";
 import logo_dark from "../../../images/logo_dark.png";
 import { ThemeContext } from "../../../context/ThemeProvider";
 import sun from "../../../images/sun.png";
 import moon from "../../../images/moon.png";
+import { removeAllFavs } from "../../../features/favorites/favoritesSlice";
+import { removeAllHistory } from "../../../features/history/historySlice";
+import { resetUser } from "../../../features/user/userSlice";
 
 export default function Header() {
+  const dispatch = useDispatch()
   const email = useSelector(
     (state: RootState) => state.userSlice.email,
     shallowEqual
   );
-  const { theme, toggleTheme } = useContext(ThemeContext);
-  const dispatch = useDispatch();
+  
   const signOut = (): void => {
+    dispatch(removeAllFavs())
+    dispatch(removeAllHistory())
     dispatch(resetUser());
   };
+
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  
   const headerLinkClass = theme === 'light' ? 'header__link' : 'header__link_dark'
   const themeButton = (
     <input
-          type="image"
-          className="header_themeButton"
-          src={theme === "light" ? moon : sun}
-          onClick={toggleTheme}
-          alt="theme button"
-        />
+      type="image"
+      className="header_themeButton"
+      src={theme === "light" ? moon : sun}
+      onClick={toggleTheme}
+      alt="theme button"
+    />
   )
   let headerActions;
   if (email.length > 1) {

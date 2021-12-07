@@ -37,7 +37,9 @@ function App() {
               }
             />
           <Route path='/search' element={<Search/>}/>
-          <Route path='/favourites' element={<Favorites />} />
+          <Route path='/favourites' element={
+                <PrivateRoute component={<Favorites/>} redirectPath="/signin" />
+              } />
           <Route path='/movie/:id' element={<Movie/>}/>
           <Route path='/' element={<Home />} />
           <Route path="*" element={<Err404/>}/>
