@@ -141,7 +141,7 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
           <input
             value={userEmail}
             name="email"
-            className="authForm_input"
+            className={theme === 'light' ? "authForm_input" : "authForm_input_dark"}
             type="email"
             placeholder="Email"
             onChange={emailOnChange}
@@ -153,7 +153,7 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
           <input
             value={userPassword}
             name="password"
-            className="authForm_input"
+            className={theme === 'light' ? "authForm_input" : "authForm_input_dark"}
             type="password"
             placeholder="Password"
             onChange={passwordOnChange}
