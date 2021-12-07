@@ -104,6 +104,7 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
     localStorage.setItem('user', usersInfo);
     setUserEmail('');
     setUserPassword('');
+    navigate('/signin');
   }
 
   // render elements

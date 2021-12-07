@@ -7,7 +7,6 @@ import './App.css';
 import "./App.css";
 import Footer from "./components/dumb/Footer/Footer";
 import Header from "./components/dumb/Header/Header";
-import { SearchHistoryList } from './components/dumb/SearchHistoryList';
 import AuthForm from './components/smart/AuthForm/AuthForm';
 import ErrorBoundary from './components/smart/ErrorBoundary/ErrorBoundary';
 import Home from './pages/Home/Home';
@@ -16,6 +15,8 @@ import Movie from './pages/Movie/Movie';
 import PrivateRoute from './components/smart/PrivateRoute/PrivateRoute';
 import Err404 from './components/dumb/Err404/Err404';
 import { ThemeContext } from './context/ThemeProvider';
+import History from './pages/History/History';
+
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
           <Route
               path="/history"
               element={
-                <PrivateRoute component={<SearchHistoryList results={[{link: 'asdf', query: 'https://image.tmdb.org/t/p/original/70nxSw3mFBsGmtkvcs91PbjerwD.jpg'} ]}/>} redirectPath="/signin" />
+                <PrivateRoute component={<History/>} redirectPath="/signin" />
               }
             />
           <Route path='/search' element={<Search/>}/>

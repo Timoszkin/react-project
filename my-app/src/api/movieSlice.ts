@@ -16,11 +16,12 @@ export const movieSlice = createApi({
       }),
       transformResponse: (response: ApiResponse) => mapApiResponseProps(response),
     }),
-    getPopularMovies: builder.query<Movie[], void>({
-      query: () => ({
+    getPopularMovies: builder.query<Movie[], number | void>({
+      query: (page = 1) => ({
         url: `/movie/popular`,
         params: {
           api_key: apiConfig.key,
+          page: page
         },
       }),
       transformResponse: (response: { results: ApiResponse[] }) =>
