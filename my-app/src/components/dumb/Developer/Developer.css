@@ -1,9 +1,9 @@
 .dev-list__item {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   text-transform: uppercase;
   position: relative;
-  height: 40px;
+  height: 25px;
   align-items: center;
 }
 
@@ -14,10 +14,20 @@
   font-weight: bold;
 }
 
+.dev-list__link_dark {
+  color: rgb(240, 240, 240);
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
 .dev-list__link:hover {
   background-color: skyblue;
   color: black;
   transition: .3s;
+}
+.developer_telegramLogo{
+  width: 35px;
 }
 
 @media screen and (min-width: 320px) and (max-width: 850px) {

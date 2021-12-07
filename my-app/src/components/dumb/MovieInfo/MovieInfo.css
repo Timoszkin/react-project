@@ -9,7 +9,7 @@
 .movie__foreground {
   padding: 30px;
   display: flex;
-  height: 600px;
+  height: calc(100vh - 210px);
   box-sizing: border-box;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.544);
