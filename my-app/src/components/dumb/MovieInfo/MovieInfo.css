@@ -9,7 +9,7 @@
 .movie__foreground {
   padding: 30px;
   display: flex;
-  height: 600px;
+  height: calc(100vh - 210px);
   box-sizing: border-box;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.544);
@@ -47,6 +47,19 @@
 .movie__information--plot {
   margin: 20px, 20px;
   text-align: left;
+}
+
+.heart{
+  display: flex;
+  width: 40px;
+  margin: 10px;
+}
+
+.favouritesWrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
 }
 
 @media only screen and (max-width : 700px) {

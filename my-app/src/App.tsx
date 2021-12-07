@@ -1,4 +1,4 @@
-import React from 'react';
+import {useContext} from 'react';
 import {
   Route,
   Routes
@@ -13,23 +13,36 @@ import Home from './pages/Home/Home';
 import Search from './pages/Search/Search';
 import Movie from './pages/Movie/Movie';
 import Favorites from './pages/Favorites/Favorites';
+import PrivateRoute from './components/smart/PrivateRoute/PrivateRoute';
+import Err404 from './components/dumb/Err404/Err404';
+import { ThemeContext } from './context/ThemeProvider';
 import History from './pages/History/History';
 
+
+
 function App() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   return (
-    <div className="App">
+    <div className={theme === "light" ? "App" : "App_dark"}>
       <ErrorBoundary>
         <Header />
+        <div className='content'>
         <Routes>
           <Route path='/signin' element={<AuthForm isLoginPage={true}/>}/>
           <Route path='/signup' element={<AuthForm isLoginPage={false}/>}/>
-          <Route path='/history' element={<History/>}/>
+          <Route
+              path="/history"
+              element={
+                <PrivateRoute component={<History/>} redirectPath="/signin" />
+              }
+            />
           <Route path='/search' element={<Search/>}/>
           <Route path='/favourites' element={<Favorites />} />
           <Route path='/movie/:id' element={<Movie/>}/>
-          <Route path='/' element={<Home/>}/>
+          <Route path='/' element={<Home />} />
+          <Route path="*" element={<Err404/>}/>
         </Routes>
-        {/* <Favorites /> */}
+        </div>
         <Footer />
       </ErrorBoundary>
     </div>

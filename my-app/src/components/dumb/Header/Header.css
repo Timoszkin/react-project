@@ -1,9 +1,18 @@
 .header {
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 10px teal;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
   width: 100%;
   font-size: 15px;
+  background: linear-gradient(0deg, rgba(247,247,247,1) 0%, rgba(204,204,204,1) 100%);
+}
+.header_dark {
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+  width: 100%;
+  font-size: 15px;
+  background-color: rgb(78, 78, 78);
 }
 
 .header__content {
@@ -17,17 +26,19 @@
 
 .header__actions {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, auto);
   gap: 15px;
   justify-content: center;
+  justify-items: center;
   align-items: center;
 }
 
 .header__actions_auth {
   display: grid;
-  grid-template-columns: repeat(2, 100px) repeat(2, 1fr);
+  grid-template-columns: repeat(3, auto) repeat(2, auto);
   gap: 15px;
   justify-content: center;
+  justify-items: center;
   align-items: center;
 }
 
@@ -36,9 +47,44 @@
   font-weight: bold;
 }
 
+.header__user_dark {
+  margin: 0;
+  font-weight: bold;
+  color:rgb(255, 255, 255)
+}
+
 .header__link {
   text-decoration: none;
   text-transform: uppercase;
-  color: teal;
+  color: rgb(73, 98, 130);
   font-weight: bold;
+}
+
+.header__link_dark {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: rgb(125, 170, 230);
+  font-weight: bold;
+}
+
+.header__link:hover {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+.header__link_dark:hover {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: rgb(228, 228, 228);
+  font-weight: bold;
+}
+
+.header_logo{
+  height: 60px;
+}
+
+.header_themeButton{
+  height: 30px;
 }

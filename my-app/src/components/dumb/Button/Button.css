@@ -1,20 +1,33 @@
 .button {
+  background: rgb(73, 98, 130);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 50px;
-  background: transparent;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  border-radius: 10px; 
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.button_dark {
+  background: chartreuse;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
   cursor: pointer;
   text-transform: uppercase;
   color: teal;
-  border: 1px teal solid;
   border-radius: 10px; 
   font-weight: bold;
   font-size: 15px;
 }
 
 .button:hover {
-  background: teal;
+  background: rgb(185, 185, 185);
   color: white;
   transition: .5s;
 }

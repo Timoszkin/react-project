@@ -4,12 +4,22 @@
 }
 
 .authForm {
-  background-color: rgba(129, 173, 199, 0.5);
+  background-color: rgb(206, 206, 206);
   margin: auto;
   text-align: center;
   min-width: 500px;
   padding: 20px;
   border-radius: 10px;
+}
+
+.authForm_dark {
+  background-color: rgba(47, 64, 73, 0.5);
+  margin: auto;
+  text-align: center;
+  min-width: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  color:rgb(255, 255, 255)
 }
 
 .authForm_input_title {
@@ -40,6 +50,18 @@
   border-radius: 10px;
   border: 1px solid rgb(206, 206, 206);
   transition: 0.3s border-color;
+}
+
+.authForm_input_dark {
+  display: block;
+  width: 96%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgb(206, 206, 206);
+  transition: 0.3s border-color;
+  background-color: rgb(206, 206, 206);
+  
 }
 
 .authForm_input:hover {

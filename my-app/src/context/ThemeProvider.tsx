@@ -15,16 +15,6 @@ export const ThemeProvider: React.FC = ({ children }) => {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
-  const backgroundColor =
-    theme === "light" ? "rgba(216, 255, 133, 0.8)" : "rgba(129, 173, 199, 0.5)";
-  const themedEl = document.querySelector<HTMLElement>(".authForm");
-
-  useEffect(() => {
-    if (themedEl !== null) {
-      themedEl!.style.backgroundColor = backgroundColor;
-    }
-  });
-
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
