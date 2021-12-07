@@ -27,7 +27,7 @@ export const userSlice = createSlice({
         ...action.payload
       }
     },
-    addFavorites: (state, action: { payload: string }) => {
+    addFavorites: (state, action: { payload: number }) => {
       console.log('added fav: ', action);
       
       return {

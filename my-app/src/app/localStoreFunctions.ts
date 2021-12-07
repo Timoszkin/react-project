@@ -5,14 +5,14 @@ const getUserList = () => {
   return JSON.parse(userListString)
 }
 
-const addFavLocalStore = (currentUserID: number, movieName: string) => {
+const addFavLocalStore = (currentUserID: number, movieId: number) => {
   const userList: User[] = getUserList()
   const newUserList = userList.map(el => {
     if (el.id === currentUserID) {
       if (!el.favorites) {
-        el.favorites = [movieName]
+        el.favorites = [movieId]
       } else {
-        el.favorites = [...el.favorites, movieName]
+        el.favorites = [...el.favorites, movieId]
       }
     }
     return el;
@@ -21,14 +21,14 @@ const addFavLocalStore = (currentUserID: number, movieName: string) => {
   localStorage.setItem('user', newUserListStringified)
 }
 
-const removeFavLocalStore = (currentUserID: number, movieName: string) => {
+const removeFavLocalStore = (currentUserID: number, movieId: number) => {
   const userList: User[] = getUserList()
   const newUserList = userList.map(el => {
     if (el.id === currentUserID) {
       if (!el.favorites) {
         el.favorites = []
       } else {
-        el.favorites = [...el.favorites.filter(movie => movie !== movieName)]
+        el.favorites = [...el.favorites.filter(movie => movie !== movieId)]
       }
     }
     return el;

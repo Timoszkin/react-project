@@ -19,7 +19,7 @@ export const MovieInfo = (props: Movie) => {
   const navigator = useNavigate();
 
   //const { name, posterPath, plot, rating, director, year, } = props;
-  const { title: name, posterPath, overview: plot, voteAverage: rating, releaseDate: year, } = props;
+  const { id, title: name, posterPath, overview: plot, voteAverage: rating, releaseDate: year, } = props;
 
   const favoritesList = useSelector(
     (state: RootState) => state.userSlice.favorites,
@@ -30,7 +30,7 @@ export const MovieInfo = (props: Movie) => {
     shallowEqual
   );
 
-  let buttonText = favoritesList.find((el) => el === name)
+  let buttonText = favoritesList.find((el) => el === id)
     ? "Remove from Favorites"
     : "Add to Favorites";
   
@@ -43,10 +43,10 @@ export const MovieInfo = (props: Movie) => {
       navigator("/signin");
       return;
     } else {
-      if (favoritesList.find((el) => el === name)) {
-        dispatch({ type: "user/removeFavorites", payload: name });
+      if (favoritesList.find((el) => el === id)) {
+        dispatch({ type: "user/removeFavorites", payload: id });
       } else {
-        dispatch({ type: "user/addFavorites", payload: name });
+        dispatch({ type: "user/addFavorites", payload: id });
       }
     }
   };

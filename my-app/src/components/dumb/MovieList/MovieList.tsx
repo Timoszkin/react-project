@@ -12,6 +12,7 @@ export const MovieList = (props: MovieListProps) => {
   return (
     <ul className="movie__list">
       {results.map((el) => (
+        // console.log(el);
         <MovieListItem key={el.id} {...el} />
       ))}
     </ul>

@@ -12,6 +12,7 @@ import ErrorBoundary from './components/smart/ErrorBoundary/ErrorBoundary';
 import Home from './pages/Home/Home';
 import Search from './pages/Search/Search';
 import Movie from './pages/Movie/Movie';
+import Favorites from './pages/Favorites/Favorites';
 import PrivateRoute from './components/smart/PrivateRoute/PrivateRoute';
 import Err404 from './components/dumb/Err404/Err404';
 import { ThemeContext } from './context/ThemeProvider';
@@ -36,6 +37,7 @@ function App() {
               }
             />
           <Route path='/search' element={<Search/>}/>
+          <Route path='/favourites' element={<Favorites />} />
           <Route path='/movie/:id' element={<Movie/>}/>
           <Route path='/' element={<Home />} />
           <Route path="*" element={<Err404/>}/>
