@@ -4,7 +4,7 @@ import { addFavLocalStore, removeFavLocalStore } from "../app/localStoreFunction
 const userActionList = ['favorites/addFav', 'favorites/removeFav']
 
 const addFavoritesToLocalStoreMiddleware: Middleware = (store) => (next) => (action) => {
-  console.log('mv', action.type)
+  
   const state = store.getState();
   if(userActionList.includes(action.type)) {
     switch(action.type) {
@@ -15,9 +15,8 @@ const addFavoritesToLocalStoreMiddleware: Middleware = (store) => (next) => (act
         })
         if(getMailList.includes(state.userSlice.email)) {
           console.log('add: ')
-          console.log('lst: ', localStorage.getItem('user'))
-          addFavLocalStore(state.userSlice.id, action.payload);
-          
+          console.log('action.payload: ', action.payload)
+          addFavLocalStore(state.userSlice.id, action.payload.movie);
         }
         break;
       }

@@ -7,7 +7,6 @@ const getUserList = () => {
 
 const addFavLocalStore = (currentUserID: number, movieId: number) => {
   const userList: User[] = getUserList()
-  console.log('addfav')
   const newUserList = userList.map(el => {
     if (el.id === currentUserID) {
       if (!el.favorites) {

@@ -22,6 +22,7 @@ import History from './pages/History/History';
 
 function App() {
   const { theme, toggleTheme } = useContext(ThemeContext);
+  // localStorage.clear()
   return (
     <div className={theme === "light" ? "App" : "App_dark"}>
       <ErrorBoundary>
