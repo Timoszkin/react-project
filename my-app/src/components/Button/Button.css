@@ -1,12 +1,10 @@
 .button {
-  /* background: rgb(73, 98, 130); */
-  /* background-color: rgb(125, 170, 230); */
-  background-color: black;
+  background: rgb(73, 98, 130);
   box-shadow: 0 0 2px #888;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
+  padding: 17px;
   cursor: pointer;
   text-transform: uppercase;
   color: rgb(255, 255, 255);
@@ -14,25 +12,32 @@
   font-weight: bold;
   font-size: 15px;
   border: none;
-  /* color: rgb(73, 98, 130); */
 }
 
 .button_dark {
-  /* background: chartreuse; */
+  background-color: black;
+  box-shadow: 0 0 2px #888;
+  color: rgb(125, 170, 230);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
+  padding: 17px;
   cursor: pointer;
   text-transform: uppercase;
-  color: teal;
   border-radius: 10px;
   font-weight: bold;
   font-size: 15px;
+  border: none;
+}
+
+.button_dark:hover {
+  background-color: black;
+  box-shadow: 0 0 15px rgb(125, 170, 230);
+  color: white;
+  transition: 0.5s;
 }
 
 .button:hover {
-  /* background-color: #6d6d6d; */
   background-color: black;
   box-shadow: 0 0 15px #888;
   color: white;

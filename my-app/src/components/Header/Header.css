@@ -1,16 +1,9 @@
 .header {
   align-items: center;
   justify-content: center;
-  /* box-shadow: 0 0 10px rgb(255, 255, 255); */
   box-shadow: 0 0 10px #888;
-
   width: 100%;
   font-size: 15px;
-  /* background: linear-gradient(
-    0deg,
-    rgba(247, 247, 247, 1) 0%,
-    rgba(204, 204, 204, 1) 100%
-  ); */
   background-color: white;
 }
 .header_dark {
@@ -19,7 +12,6 @@
   box-shadow: 0 0 10px #888;
   width: 100%;
   font-size: 15px;
-  /* background-color: rgb(78, 78, 78); */
   background-color: black;
 }
 
