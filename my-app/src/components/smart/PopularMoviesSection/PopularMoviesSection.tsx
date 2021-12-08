@@ -6,11 +6,12 @@ import './PopularMoviesSection.css';
 
 function PopularMoviesSection() {
   const [page, setPage] = useState(1);
+  const [popularMovies, setPopularMovies] = useState<Movie[]>([]);
+
   const handleLoadMoreBtnClick = () => setPage(page + 1);
 
   const { data: movies = [] } = useGetPopularMoviesQuery(page);
-
-  const [popularMovies, setPopularMovies] = useState<Movie[]>([]);
+  
   useEffect(() => {
     setPopularMovies([...popularMovies, ...movies]);
   }, [movies]);
