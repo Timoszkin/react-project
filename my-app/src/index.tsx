@@ -9,8 +9,6 @@ import { ThemeProvider } from './context/ThemeProvider';
 import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 
-const compoeseEnhancers = 
-
 ReactDOM.render(
   <React.StrictMode>
       <BrowserRouter>
