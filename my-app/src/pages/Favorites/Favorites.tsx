@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { MovieList } from "../../components/MovieList";
 import { Movie } from "../../types/Movie";
 import mapApiResponseProps from "../../api/apiUtils";
+import { apiConfig } from '../../api/constants';
 
 function Favorites() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -11,7 +12,7 @@ function Favorites() {
     setMovies([]);
     userFavorites.forEach((el) => {
       fetch(
-        `https://api.themoviedb.org/3/movie/${el?.movie}?api_key=cf7add637863045501c3b517ed0cf82a&language=en-US`
+        `https://api.themoviedb.org/3/movie/${el?.movie}?api_key=${apiConfig.key}&language=en-US`
       )
         .then((res) => res.json())
         .then((res) => setMovies((old) => [...old, mapApiResponseProps(res)]));
