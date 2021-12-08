@@ -1,7 +1,7 @@
 import React from "react";
 import { Middleware } from "redux";
 import { addFavLocalStore, removeFavLocalStore } from "../app/localStoreFunctions";
-const userActionList = ['user/addFavorites', 'user/removeFavorites']
+const userActionList = ['user/addFav', 'user/removeFav']
 
 const addFavoritesToLocalStoreMiddleware: Middleware = (store) => (next) => (action) => {
   const state = store.getState();
@@ -13,6 +13,7 @@ const addFavoritesToLocalStoreMiddleware: Middleware = (store) => (next) => (act
           return Object.values(user)[0];
         })
         if(getMailList.includes(state.userSlice.email)) {
+          console.log('balmlmcasw: ', state.userSlice.id, action.payload)
           addFavLocalStore(state.userSlice.id, action.payload);
         }
         break;
