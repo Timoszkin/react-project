@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import apiConfig from "./apiConfig";
-import { Movie, ApiResponse } from "./types";
-import mapApiResponseProps from "./utils";
+import { apiConfig } from "./constants";
+import { Movie } from "../types/Movie";
+import { ApiResponse } from "../types/ApiResponse";
+import mapApiResponseProps from "./apiUtils";
 
 export const movieSlice = createApi({
   reducerPath: "movieAPI",

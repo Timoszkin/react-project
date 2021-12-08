@@ -1,9 +1,9 @@
 import { useQuery } from "../../app/hooks";
 import { useGetMoviesQuery } from "../../api/movieSlice";
-import { MovieList } from "../../components/dumb/MovieList";
-import SearchContainer from "../../components/smart/SearchContainer/SearchContainer";
+import { MovieList } from "../../components/MovieList";
+import SearchContainer from "../../components/SearchContainer/SearchContainer";
 import "./Search.css";
-import Spinner from "../../components/dumb/Spinner/Spinner";
+import Spinner from "../../components/Spinner/Spinner";
 
 function Search() {
   const query = useQuery();
