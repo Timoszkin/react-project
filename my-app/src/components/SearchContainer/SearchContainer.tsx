@@ -12,7 +12,7 @@ import { debounce } from "../../app/utils";
 import SuggestionsList from "./SuggestionsList/SuggestionsList";
 import { addHistoryLocalStore } from "../../app/utils";
 import { RootState } from "../../store/store";
-import { ReactComponent as Icon } from "./icon.svg";
+import { ReactComponent as Icon } from "../../images/icon.svg";
 import "./SearchContainer.css";
 import { addNewHistory } from "../../store/slices/history/historySlice";
 import { nanoid } from "@reduxjs/toolkit";
