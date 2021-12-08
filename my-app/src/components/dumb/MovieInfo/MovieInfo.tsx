@@ -47,8 +47,11 @@ export const MovieInfo = (props: Movie) => {
       return;
     } else {
       if (favoritesList.find((el) => el?.movie === id)) {
+        console.log('favoritesList rem: ', favoritesList)
         dispatch(removeFav(id))
       } else {
+        console.log('favoritesList add: ', favoritesList)
+
         dispatch(addFav({id: id, movie: id}))
       }
     }
