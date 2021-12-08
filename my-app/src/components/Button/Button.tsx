@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
+import { useContext } from "react";
+import { ThemeContext } from "../../context/ThemeProvider";
 import "./Button.css";
 
 export function Button(props: any) {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const onClick = () => {
     if (props.handleClick) {
       props.handleClick();
@@ -17,7 +20,7 @@ export function Button(props: any) {
   };
 
   return (
-    <button type="button" className="button" onClick={onClick} style={style}>
+    <button type="button" className={ theme === 'light' ? "button" : "button_dark" } onClick={onClick} style={style}>
       {props.text}
     </button>
   );
