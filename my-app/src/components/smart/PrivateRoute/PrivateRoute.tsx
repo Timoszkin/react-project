@@ -3,15 +3,14 @@ import { Navigate } from "react-router-dom";
 import { RootState } from "../../../app/store";
 
 type Props = {
-    component: JSX.Element;
-    redirectPath: string;
-  };
+  component: JSX.Element;
+  redirectPath: string;
+};
 
 const PrivateRoute = ({ redirectPath, component }: Props): JSX.Element => {
+  const userEmail = useSelector((state: RootState) => state.userSlice.email);
+  const isLoggedIn = Boolean(userEmail);
 
-    const userEmail = useSelector((state: RootState)=>state.userSlice.email)
-    const isLoggedIn = Boolean(userEmail)
-    
   if (isLoggedIn) {
     return component;
   }

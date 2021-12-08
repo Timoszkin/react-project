@@ -1,14 +1,13 @@
-import { useQuery } from '../../app/hooks';
-import { useGetMoviesQuery } from '../../api/movieSlice';
-import { MovieList } from '../../components/dumb/MovieList';
-import SearchContainer from '../../components/smart/SearchContainer/SearchContainer';
-import './Search.css';
-import Spinner from '../../components/dumb/Spinner/Spinner';
+import { useQuery } from "../../app/hooks";
+import { useGetMoviesQuery } from "../../api/movieSlice";
+import { MovieList } from "../../components/dumb/MovieList";
+import SearchContainer from "../../components/smart/SearchContainer/SearchContainer";
+import "./Search.css";
+import Spinner from "../../components/dumb/Spinner/Spinner";
 
 function Search() {
-  // page url example: /search?query=harry+potter
   const query = useQuery();
-  const searchQuery = query.get('query') || '';
+  const searchQuery = query.get("query") || "";
   const {
     data: movies = [],
     isFetching,

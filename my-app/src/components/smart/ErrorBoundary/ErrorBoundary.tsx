@@ -1,5 +1,5 @@
-import React, { ErrorInfo, ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import React, { ErrorInfo, ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 type Props = {
   children: ReactNode;

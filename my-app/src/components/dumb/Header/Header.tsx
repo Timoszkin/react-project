@@ -14,21 +14,22 @@ import { removeAllHistory } from "../../../features/history/historySlice";
 import { resetUser } from "../../../features/user/userSlice";
 
 export default function Header() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const email = useSelector(
     (state: RootState) => state.userSlice.email,
     shallowEqual
   );
-  
+
   const signOut = (): void => {
-    dispatch(removeAllFavs())
-    dispatch(removeAllHistory())
+    dispatch(removeAllFavs());
+    dispatch(removeAllHistory());
     dispatch(resetUser());
   };
 
   const { theme, toggleTheme } = useContext(ThemeContext);
-  
-  const headerLinkClass = theme === 'light' ? 'header__link' : 'header__link_dark'
+
+  const headerLinkClass =
+    theme === "light" ? "header__link" : "header__link_dark";
   const themeButton = (
     <input
       type="image"
@@ -37,20 +38,22 @@ export default function Header() {
       onClick={toggleTheme}
       alt="theme button"
     />
-  )
+  );
   let headerActions;
   if (email.length > 1) {
-    // если авторизован
-    console.log("email: ", email);
     headerActions = (
       <div className="header__actions_auth">
-        <NavLink className= {headerLinkClass} to="/favourites">
+        <NavLink className={headerLinkClass} to="/favourites">
           Favourites
         </NavLink>
         <NavLink className={headerLinkClass} to="/history">
           History
         </NavLink>
-        <span className={theme === 'light' ? "header__user" : "header__user_dark"}>{email}</span>
+        <span
+          className={theme === "light" ? "header__user" : "header__user_dark"}
+        >
+          {email}
+        </span>
         <Link className="header__link" to="/">
           <Button text="Sign Out" handleClick={signOut} />
         </Link>
@@ -58,9 +61,6 @@ export default function Header() {
       </div>
     );
   } else {
-    // если не авторизован
-    console.log("error: ", email);
-
     headerActions = (
       <div className="header__actions">
         <Link className="header__link" to="/signup">
@@ -78,7 +78,11 @@ export default function Header() {
     <header className={theme === "light" ? "header" : "header_dark"}>
       <div className="header__content">
         <Link to="/">
-          <img className="header_logo" src={theme === 'light' ? logo : logo_dark} alt="LOGO" />
+          <img
+            className="header_logo"
+            src={theme === "light" ? logo : logo_dark}
+            alt="LOGO"
+          />
         </Link>
         {headerActions}
       </div>

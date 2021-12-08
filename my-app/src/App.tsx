@@ -1,24 +1,19 @@
-import {useContext} from 'react';
-import {
-  Route,
-  Routes
-} from "react-router-dom";
-import './App.css';
+import { useContext } from "react";
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
 import "./App.css";
 import Footer from "./components/dumb/Footer/Footer";
 import Header from "./components/dumb/Header/Header";
-import AuthForm from './components/smart/AuthForm/AuthForm';
-import ErrorBoundary from './components/smart/ErrorBoundary/ErrorBoundary';
-import Home from './pages/Home/Home';
-import Search from './pages/Search/Search';
-import Movie from './pages/Movie/Movie';
-import Favorites from './pages/Favorites/Favorites';
-import PrivateRoute from './components/smart/PrivateRoute/PrivateRoute';
-import Err404 from './components/dumb/Err404/Err404';
-import { ThemeContext } from './context/ThemeProvider';
-import History from './pages/History/History';
-
-
+import AuthForm from "./components/smart/AuthForm/AuthForm";
+import ErrorBoundary from "./components/smart/ErrorBoundary/ErrorBoundary";
+import Home from "./pages/Home/Home";
+import Search from "./pages/Search/Search";
+import Movie from "./pages/Movie/Movie";
+import Favorites from "./pages/Favorites/Favorites";
+import PrivateRoute from "./components/smart/PrivateRoute/PrivateRoute";
+import Err404 from "./components/dumb/Err404/Err404";
+import { ThemeContext } from "./context/ThemeProvider";
+import History from "./pages/History/History";
 
 function App() {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -26,24 +21,30 @@ function App() {
     <div className={theme === "light" ? "App" : "App_dark"}>
       <ErrorBoundary>
         <Header />
-        <div className='content'>
-        <Routes>
-          <Route path='/signin' element={<AuthForm isLoginPage={true}/>}/>
-          <Route path='/signup' element={<AuthForm isLoginPage={false}/>}/>
-          <Route
+        <div className="content">
+          <Routes>
+            <Route path="/signin" element={<AuthForm isLoginPage={true} />} />
+            <Route path="/signup" element={<AuthForm isLoginPage={false} />} />
+            <Route
               path="/history"
               element={
-                <PrivateRoute component={<History/>} redirectPath="/signin" />
+                <PrivateRoute component={<History />} redirectPath="/signin" />
               }
             />
-          <Route path='/search' element={<Search/>}/>
-          <Route path='/favourites' element={
-                <PrivateRoute component={<Favorites/>} redirectPath="/signin" />
-              } />
-          <Route path='/movie/:id' element={<Movie/>}/>
-          <Route path='/' element={<Home />} />
-          <Route path="*" element={<Err404/>}/>
-        </Routes>
+            <Route path="/search" element={<Search />} />
+            <Route
+              path="/favourites"
+              element={
+                <PrivateRoute
+                  component={<Favorites />}
+                  redirectPath="/signin"
+                />
+              }
+            />
+            <Route path="/movie/:id" element={<Movie />} />
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<Err404 />} />
+          </Routes>
         </div>
         <Footer />
       </ErrorBoundary>

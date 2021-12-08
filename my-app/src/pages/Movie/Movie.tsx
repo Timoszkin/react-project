@@ -1,11 +1,10 @@
-import { useParams, Link } from 'react-router-dom';
-import { useGetMovieQuery } from '../../api/movieSlice';
-import Spinner from '../../components/dumb/Spinner/Spinner';
-import { MovieInfo } from '../../components/dumb/MovieInfo';
-import { Movie as MovieType } from '../../api/types';
+import { useParams, Link } from "react-router-dom";
+import { useGetMovieQuery } from "../../api/movieSlice";
+import Spinner from "../../components/dumb/Spinner/Spinner";
+import { MovieInfo } from "../../components/dumb/MovieInfo";
+import { Movie as MovieType } from "../../api/types";
 
 function Movie() {
-  // page url example: /movie/589761
   const { id = 0 } = useParams();
   const { data: movie, isFetching, isSuccess, isError } = useGetMovieQuery(+id);
 
