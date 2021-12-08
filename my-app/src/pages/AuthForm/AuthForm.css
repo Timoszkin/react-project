@@ -32,7 +32,6 @@
   appearance: none;
   -webkit-appearance: none;
   padding: 5px;
-  /* background-color: rgba(39, 139, 196, 1); */
   background: rgb(73, 98, 130);
 
   color: #fff;
@@ -43,7 +42,6 @@
 }
 
 .authForm_submitButton:hover {
-  /* background-color: rgb(30, 110, 156); */
   background-color: #6d6d6d;
   transition: 0.5s;
 }

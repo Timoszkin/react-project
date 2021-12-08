@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useGetPopularMoviesQuery } from "../../api/movieSlice";
 import { MovieList } from "../MovieList/index";
 import { Movie } from "../../types/Movie";
+import Button from "../Button/Button";
 import "./PopularMoviesSection.css";
 
 function PopularMoviesSection() {
