@@ -1,6 +1,6 @@
-import { RootState } from "../../app/store";
+import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
-import { SearchHistoryList } from "../../components/dumb/SearchHistoryList/index";
+import { SearchHistoryList } from "../../components/SearchHistoryList/index";
 import "./History.css";
 
 const SEARCH_PATH = "/search?query=";

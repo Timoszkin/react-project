@@ -1,8 +1,8 @@
 import { useParams, Link } from "react-router-dom";
 import { useGetMovieQuery } from "../../api/movieSlice";
-import Spinner from "../../components/dumb/Spinner/Spinner";
-import { MovieInfo } from "../../components/dumb/MovieInfo";
-import { Movie as MovieType } from "../../api/types";
+import Spinner from "../../components/Spinner/Spinner";
+import { MovieInfo } from "../../components/MovieInfo";
+import { Movie as MovieType } from "../../types/Movie";
 
 function Movie() {
   const { id = 0 } = useParams();

@@ -1,8 +1,8 @@
-import { store } from "../../app/store";
+import { store } from "../../store/store";
 import { useState, useEffect } from "react";
-import { MovieList } from "../../components/dumb/MovieList";
-import { Movie } from "../../api/types";
-import mapApiResponseProps from "../../api/utils";
+import { MovieList } from "../../components/MovieList";
+import { Movie } from "../../types/Movie";
+import mapApiResponseProps from "../../api/apiUtils";
 
 function Favorites() {
   const [movies, setMovies] = useState<Movie[]>([]);
