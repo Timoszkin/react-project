@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { Movie } from '../../../../api/types';
+import { Link } from "react-router-dom";
+import { Movie } from "../../../../api/types";
 
 function SuggestionsListItem({ id, title, releaseDate: year }: Movie) {
   const path = `/movie/${id}`;

@@ -1,8 +1,8 @@
-import { useGetPopularMoviesQuery } from '../../api/movieSlice';
-import { MovieInfo } from '../../components/dumb/MovieInfo';
-import SearchContainer from '../../components/smart/SearchContainer/SearchContainer';
-import Spinner from '../../components/dumb/Spinner/Spinner';
-import PopularMoviesSection from '../../components/smart/PopularMoviesSection/PopularMoviesSection';
+import { useGetPopularMoviesQuery } from "../../api/movieSlice";
+import { MovieInfo } from "../../components/dumb/MovieInfo";
+import SearchContainer from "../../components/smart/SearchContainer/SearchContainer";
+import Spinner from "../../components/dumb/Spinner/Spinner";
+import PopularMoviesSection from "../../components/smart/PopularMoviesSection/PopularMoviesSection";
 
 function Home() {
   const {

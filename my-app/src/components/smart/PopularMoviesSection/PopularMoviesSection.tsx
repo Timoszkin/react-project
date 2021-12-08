@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useGetPopularMoviesQuery } from '../../../api/movieSlice';
-import { MovieList } from '../../dumb/MovieList/index';
-import { Movie } from '../../../api/types';
-import './PopularMoviesSection.css';
+import { useState, useEffect } from "react";
+import { useGetPopularMoviesQuery } from "../../../api/movieSlice";
+import { MovieList } from "../../dumb/MovieList/index";
+import { Movie } from "../../../api/types";
+import "./PopularMoviesSection.css";
 
 function PopularMoviesSection() {
   const [page, setPage] = useState(1);
@@ -11,7 +11,7 @@ function PopularMoviesSection() {
   const handleLoadMoreBtnClick = () => setPage(page + 1);
 
   const { data: movies = [] } = useGetPopularMoviesQuery(page);
-  
+
   useEffect(() => {
     setPopularMovies([...popularMovies, ...movies]);
   }, [movies]);

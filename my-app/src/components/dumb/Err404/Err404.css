@@ -1,8 +1,8 @@
-  .err404 {
-    height: calc(100vh - 210px);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    background-image: url(../../../images/404_wallу.jpg);
-    background-size: 100vw;
-  }
+.err404 {
+  height: calc(100vh - 210px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-image: url(../../../images/404_wallу.jpg);
+  background-size: 100vw;
+}

@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import './SearchHistoryList.css';
+import { Link } from "react-router-dom";
+import "./SearchHistoryList.css";
 
 type HistoryResults = {
   path: string;

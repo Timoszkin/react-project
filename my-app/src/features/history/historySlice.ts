@@ -1,9 +1,9 @@
 import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
 
 type HistoryEntities = {
-  id: string,
-  query: string,
-}
+  id: string;
+  query: string;
+};
 
 const historyAdapter = createEntityAdapter<HistoryEntities>();
 
@@ -14,7 +14,8 @@ export const historySlice = createSlice({
     addNewHistory: historyAdapter.addOne,
     loadHistory: historyAdapter.setAll,
     removeAllHistory: historyAdapter.removeAll,
-  }
+  },
 });
 
-export const { addNewHistory, loadHistory, removeAllHistory } = historySlice.actions;
+export const { addNewHistory, loadHistory, removeAllHistory } =
+  historySlice.actions;

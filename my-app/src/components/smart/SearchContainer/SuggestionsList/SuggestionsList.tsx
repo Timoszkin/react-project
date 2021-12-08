@@ -1,6 +1,6 @@
-import { useGetMoviesQuery } from '../../../../api/movieSlice';
-import SuggestionsListItem from './SuggestionsListItem';
-import './SuggestionsList.css';
+import { useGetMoviesQuery } from "../../../../api/movieSlice";
+import SuggestionsListItem from "./SuggestionsListItem";
+import "./SuggestionsList.css";
 
 type SuggestionsListProps = {
   searchValue: string;

@@ -1,4 +1,4 @@
-import { Movie, ApiResponse } from './types';
+import { Movie, ApiResponse } from "./types";
 
 const mapApiResponseProps = ({
   id,

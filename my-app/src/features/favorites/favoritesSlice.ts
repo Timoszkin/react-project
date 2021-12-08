@@ -1,10 +1,9 @@
 import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
-import store from "../../app/store";
 
 type FavotiesEntities = {
-  id: number,
-  movie: number,
-}
+  id: number;
+  movie: number;
+};
 
 const favoritesAdapter = createEntityAdapter<FavotiesEntities>();
 
@@ -16,7 +15,8 @@ export const favoritesSlice = createSlice({
     removeFav: favoritesAdapter.removeOne,
     loadFavs: favoritesAdapter.setAll,
     removeAllFavs: favoritesAdapter.removeAll,
-  }
+  },
 });
 
-export const { loadFavs, addFav, removeFav, removeAllFavs } = favoritesSlice.actions;
+export const { loadFavs, addFav, removeFav, removeAllFavs } =
+  favoritesSlice.actions;

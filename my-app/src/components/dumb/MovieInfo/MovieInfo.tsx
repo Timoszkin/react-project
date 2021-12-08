@@ -9,7 +9,6 @@ import { Movie } from "../../../api/types";
 import heartIconEmpty from "../../../images/heartEmpty.png";
 import heartIconFilled from "../../../images/heartFilled.png";
 import { addFav, removeFav } from "../../../features/favorites/favoritesSlice";
-import { idText } from "typescript";
 
 export const MovieInfo = (props: Movie) => {
   const dispatch = useDispatch();
@@ -25,7 +24,7 @@ export const MovieInfo = (props: Movie) => {
   } = props;
 
   const favoritesList = useSelector(
-    (state: RootState) => Object.values(state.favoriteSlice.entities) ,
+    (state: RootState) => Object.values(state.favoriteSlice.entities),
     shallowEqual
   );
   const currentUserID = useSelector(
@@ -47,12 +46,9 @@ export const MovieInfo = (props: Movie) => {
       return;
     } else {
       if (favoritesList.find((el) => el?.movie === id)) {
-        console.log('favoritesList rem: ', favoritesList)
-        dispatch(removeFav(id))
+        dispatch(removeFav(id));
       } else {
-        console.log('favoritesList add: ', favoritesList)
-
-        dispatch(addFav({id: id, movie: id}))
+        dispatch(addFav({ id: id, movie: id }));
       }
     }
   };

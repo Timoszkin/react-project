@@ -19,7 +19,7 @@
   min-width: 500px;
   padding: 20px;
   border-radius: 10px;
-  color:rgb(255, 255, 255)
+  color: rgb(255, 255, 255);
 }
 
 .authForm_input_title {
@@ -61,15 +61,13 @@
   border: 1px solid rgb(206, 206, 206);
   transition: 0.3s border-color;
   background-color: rgb(206, 206, 206);
-  
 }
 
 .authForm_input:hover {
   border: 1px solid #aaa;
 }
 
-
-.authForm_toggleButton{
+.authForm_toggleButton {
   margin: 7px;
 }
 .authForm_warningField {
@@ -79,11 +77,10 @@
   color: rgb(221, 17, 17);
 }
 
-.authForm_warningField::after
-{
+.authForm_warningField::after {
   display: block;
   position: relative;
-  content: '';
+  content: "";
   border-bottom: 2px solid rgb(248, 57, 57);
   width: 100%;
 }
