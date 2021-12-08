@@ -26,6 +26,13 @@
   color: black;
   transition: 0.3s;
 }
+
+.dev-list__link_dark:hover {
+  background-color: skyblue;
+  color: black;
+  transition: 0.3s;
+}
+
 .developer_telegramLogo {
   width: 35px;
 }

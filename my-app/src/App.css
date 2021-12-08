@@ -5,7 +5,8 @@
   flex-direction: column;
   grid-template-rows: auto;
   min-height: 100vh;
-  background: #e2e2e2;
+  /* background: #e2e2e2; */
+  background-color: white;
 }
 
 .App_dark {
@@ -15,7 +16,10 @@
   flex-direction: column;
   grid-template-rows: auto;
   min-height: 100vh;
-  background: #707070;
+  /* background: #707070; */
+  color: white;
+  /* text-transform: uppercase; */
+  background-color: black;
 }
 
 .App-logo {

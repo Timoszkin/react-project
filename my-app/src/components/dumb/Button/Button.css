@@ -1,5 +1,8 @@
 .button {
-  background: rgb(73, 98, 130);
+  /* background: rgb(73, 98, 130); */
+  /* background-color: rgb(125, 170, 230); */
+  background-color: black;
+  box-shadow: 0 0 2px #888;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,13 +10,15 @@
   cursor: pointer;
   text-transform: uppercase;
   color: rgb(255, 255, 255);
-  border-radius: 10px;
+  border-radius: 15px;
   font-weight: bold;
   font-size: 15px;
+  border: none;
+  /* color: rgb(73, 98, 130); */
 }
 
 .button_dark {
-  background: chartreuse;
+  /* background: chartreuse; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +32,9 @@
 }
 
 .button:hover {
-  background: rgb(185, 185, 185);
+  /* background-color: #6d6d6d; */
+  background-color: black;
+  box-shadow: 0 0 15px #888;
   color: white;
   transition: 0.5s;
 }
