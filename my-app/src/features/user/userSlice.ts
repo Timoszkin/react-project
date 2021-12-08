@@ -1,57 +1,34 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { User } from '../../types/User';
+import { createSlice } from "@reduxjs/toolkit";
+import { User } from "../../types/User";
 
-export interface UserState {
-  currentUser: User | null,
+type UserState = {
+  email: string, 
+  id: number,
 }
 
-const initialState: User = {
-  email: '',
-  password: '',
-  favorites: [],
-  history: [],
+const initialState = {
+  email: "",
   id: 0,
 };
 
 export const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
     resetUser: (state) => {
       return {
-        ...initialState
-      }
+        ...initialState,
+      };
     },
     setUser: (state, action) => {
       return {
-        ...action.payload
-      }
-    },
-    addFavorites: (state, action: { payload: number }) => {
-      console.log('added fav: ', action);
-      
-      return {
-        ...state,
-        favorites: [...state.favorites, action.payload]
-      }
-    },
-    removeFavorites: (state, action) => {
-      console.log('func removed action.payload: ', action.payload)
-      return {
-        ...state,
-        favorites: state.favorites.filter(el => el !== action.payload)
-      }
-    },
-    addHistory: (state, action) => {
-      // state.history.push(action.payload)
-      return {
-        ...state,
-        history: [...state.history, action.payload]
-      }
+        ...action.payload,
+      };
     },
   },
 });
 
-export const { setUser, resetUser, addFavorites, removeFavorites, addHistory } = userSlice.actions;
+export const { setUser, resetUser } =
+  userSlice.actions;
 
 export default userSlice.reducer;

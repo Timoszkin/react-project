@@ -6,6 +6,9 @@ import { setUser } from "../../../features/user/userSlice";
 import "./AuthForm.css";
 import { User } from "../../../types/User";
 import { ThemeContext } from "../../../context/ThemeProvider";
+import { loadFavs } from "../../../features/favorites/favoritesSlice";
+import { loadHistory } from "../../../features/history/historySlice";
+import { nanoid } from "@reduxjs/toolkit";
 
 type AuthFormProp = {
   isLoginPage: boolean;
@@ -47,6 +50,14 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
     }
   };
 
+  const loginSetStates = (foundUser: User) => {
+    const FavsArr = foundUser.favorites.map(el => { return { id: el, movie: el } })
+    const HistArr = foundUser.history.map(el => { return { id: nanoid(), query: el } })
+    dispatch(loadHistory(HistArr))
+    dispatch(loadFavs(FavsArr))
+    dispatch(setUser(foundUser))
+  }
+
   const handleLogin = () => {
     const userListString: string = localStorage.getItem('user') || '[]';
     const userList: User[] = JSON.parse(userListString)
@@ -76,7 +87,8 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
 
       return;
     } else {
-      dispatch(setUser(foundUser))
+      
+      loginSetStates(foundUser)
       setUserEmail('')
       setUserPassword('')
       navigate('/');
@@ -125,10 +137,6 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
     </button>
   );
 
-  // useEffect(()=>{
-  //   toggleTheme()
-  // },[])
-
   return (
     <div className="authForm_outerContainer">
       <form
@@ -176,11 +184,6 @@ export default function AuthForm({ isLoginPage }: AuthFormProp) {
             {isLoginPage ? "Sign Up" : "Log in"}
           </Link>
         </div>
-        {/* <div>
-          <button className="authForm_toggleButton" onClick={toggleTheme}>
-            Change color
-          </button>
-        </div> */}
       </form>
     </div>
   );

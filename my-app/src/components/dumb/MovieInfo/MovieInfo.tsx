@@ -1,28 +1,31 @@
 import "./MovieInfo.css";
 import { TMDB_IMAGE_PATH } from "../../../api/movieImageLink";
 import Button from "../Button/Button";
-import {
-  addFavorites,
-  removeFavorites,
-} from "../../../features/user/userSlice";
 import { useSelector, shallowEqual } from "react-redux";
 import { RootState } from "../../../app/store";
 import { useDispatch } from "react-redux";
-import { useNavigate } from 'react-router'
-import { addFavLocalStore, removeFavLocalStore } from '../../../app/localStoreFunctions'
-import { Movie } from '../../../api/types'
-import heartIconEmpty from "../../../images/heartEmpty.png"
-import heartIconFilled from "../../../images/heartFilled.png"
+import { useNavigate } from "react-router";
+import { Movie } from "../../../api/types";
+import heartIconEmpty from "../../../images/heartEmpty.png";
+import heartIconFilled from "../../../images/heartFilled.png";
+import { addFav, removeFav } from "../../../features/favorites/favoritesSlice";
+import { idText } from "typescript";
 
 export const MovieInfo = (props: Movie) => {
   const dispatch = useDispatch();
   const navigator = useNavigate();
 
-  //const { name, posterPath, plot, rating, director, year, } = props;
-  const { id, title: name, posterPath, overview: plot, voteAverage: rating, releaseDate: year, } = props;
+  const {
+    id,
+    title: name,
+    posterPath,
+    overview: plot,
+    voteAverage: rating,
+    releaseDate: year,
+  } = props;
 
   const favoritesList = useSelector(
-    (state: RootState) => state.userSlice.favorites,
+    (state: RootState) => Object.values(state.favoriteSlice.entities) ,
     shallowEqual
   );
   const currentUserID = useSelector(
@@ -30,23 +33,23 @@ export const MovieInfo = (props: Movie) => {
     shallowEqual
   );
 
-  let buttonText = favoritesList.find((el) => el === id)
+  let buttonText = favoritesList.find((el) => el?.movie === id)
     ? "Remove from Favorites"
     : "Add to Favorites";
-  
-  const heartIcon = favoritesList.find((el) => el === name)
+
+  const heartIcon = favoritesList.find((el) => el?.movie === id)
     ? heartIconFilled
-    : heartIconEmpty
+    : heartIconEmpty;
 
   const toggleFavorites = () => {
     if (currentUserID === 0) {
       navigator("/signin");
       return;
     } else {
-      if (favoritesList.find((el) => el === id)) {
-        dispatch({ type: "user/removeFavorites", payload: id });
+      if (favoritesList.find((el) => el?.movie === id)) {
+        dispatch(removeFav(id))
       } else {
-        dispatch({ type: "user/addFavorites", payload: id });
+        dispatch(addFav({id: id, movie: id}))
       }
     }
   };
@@ -76,25 +79,10 @@ export const MovieInfo = (props: Movie) => {
               <h3 className="movie__information--header">RATING</h3>
               <p className="movie__information--rating">{rating}</p>
             </div>
-
-            {/* API DOESN'T SUPPORT DIRECTOR INFO :C */}
-            {/* <div
-              className="movie__information--details"
-            >
-              <h3
-                className="movie__information--header"
-              >
-                DIRECTOR
-              </h3>
-            <div className="movie__information--details">
-              <h3 className="movie__information--header">DIRECTOR</h3>
-              <p>{director}</p>
-            </div> */}
-            
-          </div >
+          </div>
           <div className="favouritesWrapper">
-          <img className="heart" src={heartIcon} alt="heart" />
-          <Button text={buttonText} handleClick={toggleFavorites} />
+            <img className="heart" src={heartIcon} alt="heart" />
+            <Button text={buttonText} handleClick={toggleFavorites} />
           </div>
         </div>
       </div>

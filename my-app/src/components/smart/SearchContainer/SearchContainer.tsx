@@ -10,11 +10,12 @@ import { useNavigate } from 'react-router';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { debounce } from '../../../app/utils';
 import SuggestionsList from './SuggestionsList/SuggestionsList';
-import { addHistory } from '../../../features/user/userSlice';
 import { addHistoryLocalStore } from '../../../app/localStoreFunctions';
 import { RootState } from '../../../app/store';
 import { ReactComponent as Icon } from './icon.svg';
 import './SearchContainer.css';
+import { addNewHistory } from '../../../features/history/historySlice';
+import { nanoid } from '@reduxjs/toolkit';
 
 const DEBOUNCE_DELAY = 800;
 
@@ -58,9 +59,8 @@ function SearchContainer() {
       if (searchValue.length !== 0) {
         navigate(`/search?query=${searchValue.trim().replaceAll(' ', '+')}`);
         // add to history
-        dispatch(addHistory(searchValue));
+        dispatch(addNewHistory({ id: nanoid(), query: searchValue}))
         addHistoryLocalStore(currentUserID, searchValue);
-        console.log(localStorage.getItem('user'));
         // reset search on redirect
         setShowSuggestions(false);
         inputRef.current?.blur();

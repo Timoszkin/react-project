@@ -7,12 +7,14 @@ const SEARCH_PATH = '/search?query=';
 
 function History() {
   const searchHistory = useSelector(
-    (state: RootState) => state.userSlice.history
+    (state: RootState) => Object.values(state.historySlice.entities) 
   );
 
+  // Object.values(store.getState().historySlice.entities)
+
   const historyRes = searchHistory.map((searchText) => ({
-    path: SEARCH_PATH + searchText.trim().replaceAll(' ', '+'),
-    text: searchText,
+    path: SEARCH_PATH + searchText?.query.trim().replaceAll(' ', '+'),
+    text: searchText?.query || '',
   }));
 
   return (
