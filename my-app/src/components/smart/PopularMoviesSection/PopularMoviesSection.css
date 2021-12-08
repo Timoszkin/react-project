@@ -4,6 +4,7 @@
 
 .popular-movies__title {
   margin: 0 0 20px;
+  text-transform: uppercase;
 }
 
 .popular-movies__btn {

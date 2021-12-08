@@ -37,6 +37,7 @@
   -moz-transition: all .5s ease-out;
   -o-transition: all .5s ease-out;
   -webkit-transition: all .5s ease-out;
+  box-shadow: 0 0 5px #888;
 }
 
 .movie__list a img:hover {
