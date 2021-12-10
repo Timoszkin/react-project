@@ -16,7 +16,7 @@ import { ThemeContext } from "./context/ThemeProvider";
 import History from "./pages/History/History";
 
 function App() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   return (
     <div className={theme === "light" ? "App" : "App_dark"}>
       <ErrorBoundary>
